@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E371AEC-1605-44EE-8F17-D782226AFD6A}</ProjectGuid>
+    <ProjectTypeGuids>{349C5851-65DF-11DA-9384-00065B846F21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>HRManagement</RootNamespace>
+    <AssemblyName>HRManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="fonts\boxicons.scss" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\helpers.js" />
+    <Content Include="Scripts\menu.js" />
+    <Content Include="Content\assets\js\ui-popover.js" />
+    <Content Include="Content\assets\js\ui-toasts.js" />
+    <Content Include="Content\assets\js\dashboards-analytics.js" />
+    <Content Include="Content\assets\js\form-basic-inputs.js" />
+    <Content Include="Content\assets\js\pages-account-settings-account.js" />
+    <Content Include="Content\assets\js\main.js" />
+    <Content Include="Content\assets\js\extended-ui-perfect-scrollbar.js" />
+    <Content Include="Content\assets\js\ui-modals.js" />
+    <Content Include="Content\assets\js\config.js" />
+    <Content Include="Content\assets\css\demo.css" />
+    <Content Include="Content\assets\vendor\js\bootstrap.js" />
+    <Content Include="Content\assets\vendor\js\helpers.js" />
+    <Content Include="Content\assets\vendor\js\menu.js" />
+    <Content Include="Content\assets\vendor\fonts\boxicons.css" />
+    <Content Include="Content\assets\vendor\fonts\boxicons\boxicons.svg" />
+    <Content Include="Content\assets\vendor\fonts\boxicons\boxicons.ttf" />
+    <Content Include="Content\assets\vendor\fonts\boxicons\boxicons.woff" />
+    <Content Include="Content\assets\vendor\fonts\boxicons\boxicons.eot" />
+    <Content Include="Content\assets\vendor\css\theme-default.css" />
+    <Content Include="Content\assets\vendor\css\core.css" />
+    <Content Include="Content\assets\vendor\css\pages\page-misc.css" />
+    <Content Include="Content\assets\vendor\css\pages\page-auth.css" />
+    <Content Include="Content\assets\vendor\css\pages\page-icons.css" />
+    <Content Include="Content\assets\vendor\css\pages\page-account-settings.css" />
+    <Content Include="Content\assets\vendor\libs\jquery\jquery.js" />
+    <Content Include="Content\assets\vendor\libs\popper\popper.js" />
+    <Content Include="Content\assets\vendor\libs\highlight\highlight-github.css" />
+    <Content Include="Content\assets\vendor\libs\highlight\highlight.js" />
+    <Content Include="Content\assets\vendor\libs\highlight\highlight.css" />
+    <Content Include="Content\assets\vendor\libs\apex-charts\apexcharts.js" />
+    <Content Include="Content\assets\vendor\libs\apex-charts\apex-charts.css" />
+    <Content Include="Content\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Content\assets\vendor\libs\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Content\assets\vendor\libs\masonry\masonry.js" />
+    <Content Include="Content\assets\img\layouts\layout-without-menu-light.png" />
+    <Content Include="Content\assets\img\layouts\layout-fluid-light.png" />
+    <Content Include="Content\assets\img\layouts\layout-container-light.png" />
+    <Content Include="Content\assets\img\layouts\layout-without-navbar-light.png" />
+    <Content Include="Content\assets\img\elements\5.jpg" />
+    <Content Include="Content\assets\img\elements\18.jpg" />
+    <Content Include="Content\assets\img\elements\12.jpg" />
+    <Content Include="Content\assets\img\elements\2.jpg" />
+    <Content Include="Content\assets\img\elements\1.jpg" />
+    <Content Include="Content\assets\img\elements\3.jpg" />
+    <Content Include="Content\assets\img\elements\17.jpg" />
+    <Content Include="Content\assets\img\elements\13.jpg" />
+    <Content Include="Content\assets\img\elements\11.jpg" />
+    <Content Include="Content\assets\img\elements\7.jpg" />
+    <Content Include="Content\assets\img\elements\20.jpg" />
+    <Content Include="Content\assets\img\elements\4.jpg" />
+    <Content Include="Content\assets\img\elements\19.jpg" />
+    <Content Include="Content\assets\img\backgrounds\18.jpg" />
+    <Content Include="Content\assets\img\avatars\1.png" />
+    <Content Include="Content\assets\img\avatars\6.png" />
+    <Content Include="Content\assets\img\avatars\7.png" />
+    <Content Include="Content\assets\img\avatars\5.png" />
+    <Content Include="Content\assets\img\illustrations\page-misc-error-light.png" />
+    <Content Include="Content\assets\img\illustrations\girl-doing-yoga-light.png" />
+    <Content Include="Content\assets\img\illustrations\man-with-laptop-light.png" />
+    <Content Include="Content\assets\img\icons\brands\instagram.png" />
+    <Content Include="Content\assets\img\icons\brands\facebook.png" />
+    <Content Include="Content\assets\img\icons\brands\slack.png" />
+    <Content Include="Content\assets\img\icons\brands\asana.png" />
+    <Content Include="Content\assets\img\icons\brands\github.png" />
+    <Content Include="Content\assets\img\icons\brands\behance.png" />
+    <Content Include="Content\assets\img\icons\brands\google.png" />
+    <Content Include="Content\assets\img\icons\brands\mailchimp.png" />
+    <Content Include="Content\assets\img\icons\brands\twitter.png" />
+    <Content Include="Content\assets\img\icons\brands\dribbble.png" />
+    <Content Include="Content\assets\img\icons\unicons\cc-primary.png" />
+    <Content Include="Content\assets\img\icons\unicons\cc-success.png" />
+    <Content Include="Content\assets\img\icons\unicons\wallet.png" />
+    <Content Include="Content\assets\img\icons\unicons\paypal.png" />
+    <Content Include="Content\assets\img\icons\unicons\chart.png" />
+    <Content Include="Content\assets\img\icons\unicons\chart-success.png" />
+    <Content Include="Content\assets\img\icons\unicons\wallet-info.png" />
+    <Content Include="Content\assets\img\icons\unicons\cc-warning.png" />
+    <Content Include="Content\scss\_colors.scss" />
+    <Content Include="Content\scss\_bootstrap-extended.scss" />
+    <Content Include="Content\scss\_components.scss" />
+    <Content Include="Content\scss\_bootstrap.scss" />
+    <Content Include="Content\scss\theme-default.scss" />
+    <Content Include="Content\scss\core.scss" />
+    <Content Include="Content\scss\_components\_common.scss" />
+    <Content Include="Content\scss\_components\_menu.scss" />
+    <Content Include="Content\scss\_components\_app-brand.scss" />
+    <Content Include="Content\scss\_components\_layout.scss" />
+    <Content Include="Content\scss\_components\_variables.scss" />
+    <Content Include="Content\scss\_components\_mixins.scss" />
+    <Content Include="Content\scss\_components\_footer.scss" />
+    <Content Include="Content\scss\_components\_text-divider.scss" />
+    <Content Include="Content\scss\_components\_avatar.scss" />
+    <Content Include="Content\scss\_components\_base.scss" />
+    <Content Include="Content\scss\_components\_include.scss" />
+    <Content Include="Content\scss\_components\mixins\_navbar.scss" />
+    <Content Include="Content\scss\_components\mixins\_misc.scss" />
+    <Content Include="Content\scss\_components\mixins\_menu.scss" />
+    <Content Include="Content\scss\_components\mixins\_app-brand.scss" />
+    <Content Include="Content\scss\_components\mixins\_footer.scss" />
+    <Content Include="Content\scss\_components\mixins\_text-divider.scss" />
+    <Content Include="Content\scss\_components\mixins\_avatar.scss" />
+    <Content Include="Content\scss\pages\page-misc.scss" />
+    <Content Include="Content\scss\pages\page-account-settings.scss" />
+    <Content Include="Content\scss\pages\page-auth.scss" />
+    <Content Include="Content\scss\pages\page-icons.scss" />
+    <Content Include="Content\scss\_theme\_common.scss" />
+    <Content Include="Content\scss\_theme\_theme.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_badge.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_root.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_navbar.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_tables.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_buttons.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_spinners.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_utilities.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_nav.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_carousel.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_progress.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_type.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_list-group.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_popover.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_functions.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_breadcrumb.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_variables.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_reboot.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_utilities-ltr.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_tooltip.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_mixins.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_dropdown.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_pagination.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_modal.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_forms.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_card.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_alert.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_button-group.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_close.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_include.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_offcanvas.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_toasts.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\_accordion.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\forms\_floating-labels.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\forms\_form-select.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\forms\_form-control.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\forms\_form-range.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\forms\_labels.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\forms\_input-group.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\forms\_validation.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_badge.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_buttons.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_misc.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_progress.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_list-group.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_dropdown.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_pagination.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_table-variants.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_forms.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_caret.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_alert.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_navs.scss" />
+    <Content Include="Content\scss\_bootstrap-extended\mixins\_toasts.scss" />
+    <Content Include="Content\scss\_custom-variables\_bootstrap-extended.scss" />
+    <Content Include="Content\scss\_custom-variables\_components.scss" />
+    <Content Include="Content\scss\_custom-variables\_support.scss" />
+    <Content Include="Content\scss\_custom-variables\_pages.scss" />
+    <Content Include="Content\scss\_custom-variables\_libs.scss" />
+    <Content Include="Views\Login.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="Views\ForgotPassword.aspx" />
+    <Content Include="Views\Registration.aspx" />
+    <Content Include="Views\Dashboard.aspx" />
+    <Content Include="Content\assets\img\avatars\empty-user.jpg" />
+    <Content Include="Content\assets\vendor\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\assets\vendor\js\jquery.dataTables.min.js" />
+    <Content Include="Content\assets\vendor\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Views\Administration\AllCandidate.aspx" />
+    <Content Include="Views\Administration\CandidateRegistration.aspx" />
+    <Content Include="Views\Employee\AllEmployee.aspx" />
+    <Content Include="Views\Employee\Departments.aspx" />
+    <Content Include="Views\Employee\Designations.aspx" />
+    <Content Include="Views\Employee\EmployeeRegistration.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Views\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Registration.aspx.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Registration.aspx.designer.cs">
+      <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\AllCandidate.aspx.cs">
+      <DependentUpon>AllCandidate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\AllCandidate.aspx.designer.cs">
+      <DependentUpon>AllCandidate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\CandidateRegistration.aspx.cs">
+      <DependentUpon>CandidateRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\CandidateRegistration.aspx.designer.cs">
+      <DependentUpon>CandidateRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\AllEmployee.aspx.cs">
+      <DependentUpon>AllEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\AllEmployee.aspx.designer.cs">
+      <DependentUpon>AllEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\Departments.aspx.cs">
+      <DependentUpon>Departments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\Departments.aspx.designer.cs">
+      <DependentUpon>Departments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\Designations.aspx.cs">
+      <DependentUpon>Designations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\Designations.aspx.designer.cs">
+      <DependentUpon>Designations.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\EmployeeRegistration.aspx.cs">
+      <DependentUpon>EmployeeRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\EmployeeRegistration.aspx.designer.cs">
+      <DependentUpon>EmployeeRegistration.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="App_Start\" />
+    <Folder Include="Content\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="fonts\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\Employee\" />
+    <Folder Include="Views\Administration\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\assets\vendor\fonts\boxicons\boxicons.woff2" />
+    <None Include="Content\assets\img\favicon\favicon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>

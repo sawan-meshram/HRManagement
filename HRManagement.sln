@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagement", "HRManagement\HRManagement.csproj", "{9E371AEC-1605-44EE-8F17-D782226AFD6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRManagement.Tests", "HRManagement.Tests\HRManagement.Tests.csproj", "{F6DCDD33-B33B-4B2E-BE64-57254A0A466D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E371AEC-1605-44EE-8F17-D782226AFD6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E371AEC-1605-44EE-8F17-D782226AFD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E371AEC-1605-44EE-8F17-D782226AFD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E371AEC-1605-44EE-8F17-D782226AFD6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6DCDD33-B33B-4B2E-BE64-57254A0A466D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6DCDD33-B33B-4B2E-BE64-57254A0A466D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6DCDD33-B33B-4B2E-BE64-57254A0A466D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6DCDD33-B33B-4B2E-BE64-57254A0A466D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
