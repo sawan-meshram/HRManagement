@@ -6,3 +6,6 @@
 /home/shatam-25/mono_workspace/HRManagement/HRManagement/obj/Debug/HRManagement.csproj.CopyComplete
 /home/shatam-25/mono_workspace/HRManagement/HRManagement/obj/Debug/HRManagement.dll
 /home/shatam-25/mono_workspace/HRManagement/HRManagement/obj/Debug/HRManagement.pdb
+/home/shatam-25/mono_workspace/HRManagement/HRManagement/obj/Debug/HRManagement.csprojAssemblyReference.cache
+/home/shatam-25/mono_workspace/HRManagement/HRManagement/bin/Newtonsoft.Json.dll
+/home/shatam-25/mono_workspace/HRManagement/HRManagement/bin/Newtonsoft.Json.xml

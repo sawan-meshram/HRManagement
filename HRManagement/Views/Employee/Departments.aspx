@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="HRManagement.Views.Employee.Departments" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Departments.aspx.cs" Inherits="HRManagement.Views.Employee.Departments" %>
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="/Content/assets/" data-template="vertical-menu-template-free">
   <head>
@@ -17,11 +17,13 @@
     <!-- Core CSS -->
     <link rel="stylesheet" href="/Content/assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="/Content/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-	<link rel="stylesheet" href="/Content/assets/vendor/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="/Content/assets/css/demo.css" />
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="/Content/assets/vendor/libs/apex-charts/apex-charts.css" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css" />
+
     <!-- Page CSS -->
     <!-- Helpers -->
     <script src="/Content/assets/vendor/js/helpers.js"></script>
@@ -139,6 +141,20 @@
                  
                 </ul>
               </li>
+              <li class="menu-item">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                  <i class="menu-icon tf-icons bx bx-user-check"></i>
+                  <div data-i18n="Extended UI">Attendance</div>
+                </a>
+                <ul class="menu-sub">
+                
+                  <li class="menu-item">
+                    <a href="employee-add-attendance" class="menu-link">
+                      <div data-i18n="Perfect Scrollbar">Add Attendance</div>
+                    </a>
+                  </li>
+                </ul>
+              </li>
           </ul>
         </aside>
         <!-- / Menu -->
@@ -252,134 +268,166 @@
                   </ul>
                   -->
 				  <div class="card mb-4">
-					<h5 class="card-header">Department Names</h5>
-					<div class="table-responsive text-nowrap">
-					  <table class="table table-striped datatable">
-						<thead>
-						  <tr>
-							<th>#</th>
-							<th>Department Name</th>
-							<th class="text-end">Actions</th>
-						  </tr>
-						</thead>
-						<tbody class="table-border-bottom-0">
-						  <tr>
-							<td>1</td>
-							<td><strong>Web Development Project</strong></td>
-							<td class="text-end">
-							  <div class="dropdown">
-								<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-								  <i class="bx bx-dots-vertical-rounded"></i>
-								</button>
-								<div class="dropdown-menu">
-								  <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
-									<i class="bx bx-edit-alt me-1"></i> Edit </a>
-								  <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDepartment">
-									<i class="bx bx-trash me-1"></i> Delete </a>
-								</div>
-							  </div>
-							</td>
-						  </tr>
-						  <tr>
-							<td>2</td>
-							<td> <strong>Application Development</strong></td>
-							<td class="text-end">
-							  <div class="dropdown">
-								<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-								  <i class="bx bx-dots-vertical-rounded"></i>
-								</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
-										<i class="bx bx-edit-alt me-1"></i> Edit </a>
-									<a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDepartment">
-										<i class="bx bx-trash me-1"></i> Delete </a>
-								</div>
-							  </div>
-							</td>
-						  </tr>
-						  <tr>
-							<td>3</td>
-							<td><strong>Android Development</strong></td>
-							<td class="text-end">
-							  <div class="dropdown">
-								<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-								  <i class="bx bx-dots-vertical-rounded"></i>
-								</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
-										<i class="bx bx-edit-alt me-1"></i> Edit </a>
-									<a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDepartment">
-										<i class="bx bx-trash me-1"></i> Delete </a>
-								</div>
-							  </div>
-							</td>
-						  </tr>
-						</tbody>
-					  </table>
-					</div> <!--Table-->
-					
-					<div class="row">
-						<div class="col mt-3 demo-inline-spacing">
-							<nav aria-label="Page navigation">
-							<ul class="pagination justify-content-end">
-								<li class="page-item prev">
-								<a class="page-link" href="javascript:void(0);">
-									<i class="tf-icon bx bx-chevrons-left"></i>
-								</a>
-								</li>
-								<li class="page-item">
-								<a class="page-link" href="javascript:void(0);">1</a>
-								</li>
-								<li class="page-item">
-								<a class="page-link" href="javascript:void(0);">2</a>
-								</li>
-								<li class="page-item active">
-								<a class="page-link" href="javascript:void(0);">3</a>
-								</li>
-								<li class="page-item">
-								<a class="page-link" href="javascript:void(0);">4</a>
-								</li>
-								<li class="page-item">
-								<a class="page-link" href="javascript:void(0);">5</a>
-								</li>
-								<li class="page-item next">
-								<a class="page-link" href="javascript:void(0);">
-									<i class="tf-icon bx bx-chevrons-right"></i>
-								</a>
-								</li>
-							</ul>
-							</nav>
-						</div>
-					</div> <!-- Row-->
-
-
+					  <h5 class="card-header">Department Names</h5>
+            <hr class="my-3" />
+            <div class="table-responsive text-nowrap">
+              <table class="table table-striped" id="deptTable">
+              <thead>
+                <tr>
+                <th>#</th>
+                <th>Department Name</th>
+                <th class="text-end">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="table-border-bottom-0">
+                <% foreach (var dept in departments) { %>
+                  <tr>
+                    <td><%= dept.Id %></td>
+                    <td><strong><%= dept.Name %></strong></td>
+                    <td class="text-end">
+                      <div class="dropdown">
+                      <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
+                        <i class="bx bx-edit-alt me-1"></i> Edit </a>
+                        <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDepartment">
+                        <i class="bx bx-trash me-1"></i> Delete </a>
+                      </div>
+                      </div>
+                    </td>
+                  </tr>
+                <% } %>
+                <!--
+                <tr>
+                <td>1</td>
+                <td><strong>Web Development Project</strong></td>
+                <td class="text-end">
+                  <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
+                    <i class="bx bx-edit-alt me-1"></i> Edit </a>
+                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDepartment">
+                    <i class="bx bx-trash me-1"></i> Delete </a>
+                  </div>
+                  </div>
+                </td>
+                </tr>
+               
+                <tr>
+                <td>2</td>
+                <td> <strong>Application Development</strong></td>
+                <td class="text-end">
+                  <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
+                      <i class="bx bx-edit-alt me-1"></i> Edit </a>
+                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDepartment">
+                      <i class="bx bx-trash me-1"></i> Delete </a>
+                  </div>
+                  </div>
+                </td>
+                </tr>
+                <tr>
+                <td>3</td>
+                <td><strong>Android Development</strong></td>
+                <td class="text-end">
+                  <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
+                      <i class="bx bx-edit-alt me-1"></i> Edit </a>
+                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDepartment">
+                      <i class="bx bx-trash me-1"></i> Delete </a>
+                  </div>
+                  </div>
+                </td>
+                </tr>
+                --> 
+              </tbody>
+              </table>
+            </div> <!--Table-->
+            <!--
+            <div class="row">
+              <div class="col mt-3 demo-inline-spacing">
+                <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-end">
+                  <li class="page-item prev">
+                  <a class="page-link" href="javascript:void(0);">
+                    <i class="tf-icon bx bx-chevrons-left"></i>
+                  </a>
+                  </li>
+                  <li class="page-item">
+                  <a class="page-link" href="javascript:void(0);">1</a>
+                  </li>
+                  <li class="page-item">
+                  <a class="page-link" href="javascript:void(0);">2</a>
+                  </li>
+                  <li class="page-item active">
+                  <a class="page-link" href="javascript:void(0);">3</a>
+                  </li>
+                  <li class="page-item">
+                  <a class="page-link" href="javascript:void(0);">4</a>
+                  </li>
+                  <li class="page-item">
+                  <a class="page-link" href="javascript:void(0);">5</a>
+                  </li>
+                  <li class="page-item next">
+                  <a class="page-link" href="javascript:void(0);">
+                    <i class="tf-icon bx bx-chevrons-right"></i>
+                  </a>
+                  </li>
+                </ul>
+                </nav>
+              </div>
+            </div>-->  <!-- Row-->
+            
 				  </div> <!-- Card -->
                  
                 </div> <!-- Col -->
               </div> <!-- Row -->
-
+              
+        <div id="successToast" class="bs-toast toast bg-info m-2 toast-placement-ex top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+          <div class="toast-header"> <i class="bx bx-bell me-2"></i> <div class="me-auto fw-semibold">Success.</div><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> </div>
+          <div class="toast-body">Department added successfully.</div>
+        </div>
+              
+            
+        <!--addDepartment-->
 			  <div class="modal fade" id="addDepartment" tabindex="-1" aria-hidden="true">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 				  <div class="modal-content">
 					<div class="modal-header">
-					  <h5 class="modal-title" id="exampleModalLabel2">Add Department</h5>
+					  <h5 class="modal-title">Add Department</h5>
 					  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
-					<div class="modal-body">
-					  <div class="row">
-						<div class="col mb-3">
-						  <label for="departmentName" class="form-label">Department Name</label>
-						  <input type="text" id="departmentName" class="form-control" placeholder="For ex. 'Wed Development'" />
-						</div>
-					  </div>
-					</div>
-					<div class="modal-footer">
-					  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
-					  <button type="button" class="btn btn-primary">Add Department</button>
-					</div>
+          <form id="addDepartmentForm" runat="server">
+            <div class="modal-body">
+              <div class="row">
+              <div class="col mb-3">
+                <label for="departmentName" class="form-label">Department Name</label>
+                <input type="text" id="departmentName" name="departmentName" class="form-control" placeholder="For ex. 'Wed Development'" required />
+                <div id="deptMsg" class="my-2 alert alert-danger" role="alert">Please provide a department name.</div>
+              </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
+              <button type="button" class="btn btn-primary" id="submit_form" onclick="addDepartmentFunction()">Add Department</button>
+            </div>
+          </form>
 				  </div>
 				</div>
-			  </div>
+			  </div> <!--/ addDepartment-->
 			  <div id="editDepartment" class="modal fade" role="dialog">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 				  <div class="modal-content">
@@ -447,19 +495,75 @@
     <script src="/Content/assets/vendor/libs/jquery/jquery.js"></script>
     <script src="/Content/assets/vendor/libs/popper/popper.js"></script>
     <script src="/Content/assets/vendor/js/bootstrap.js"></script>
-	<script src="/Content/assets/vendor/js/jquery.dataTables.min.js"></script>
-	<script src="/Content/assets/vendor/js/dataTables.bootstrap4.min.js"></script>
 
     <script src="/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="/Content/assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
     <!-- Vendors JS -->
-    <script src="/Content/assets/vendor/libs/apex-charts/apexcharts.js"></script>
     <!-- Main JS -->
     <script src="/Content/assets/js/main.js"></script>
     <!-- Page JS -->
-    <script src="/Content/assets/js/dashboards-analytics.js"></script>
     <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>  
+    -->
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+    
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+          $('#deptTable').DataTable();
+          $('#deptMsg').hide();
+      } );
+    </script>
+    <script type="text/javascript">
+      function addDepartmentFunction() {
+          var name = $("#departmentName").val();
+          name = name.trim();
+          if (name.length == 0 || name == "") {
+            $('#deptMsg').show();
+            $('#deptMsg').delay(3000).fadeOut();
+            return false;
+          }else{
+            $('#deptMsg').hide();
+          }
+          var json = {};
+          json.Name = name;
+          //alert(json);
+          $.ajax({
+              type: "POST",
+              url: "/addDepartment",
+              contentType: "application/json; charset=utf-8",
+              data: JSON.stringify(json),
+              dataType: "json",
+              success: function(data) {
+                //alert(resp.status);
+                  //alert(JSON.stringify(resp));
+                  //alert();
+                  //var data = JSON.parse(JSON.stringify(resp));
+                  if(data.status == 'success'){
+                    $('#addDepartment').modal('hide');
+                    var myToast = document.getElementById('successToast')
+                    var successToast = new bootstrap.Toast(myToast);
+                    successToast.show()
+
+                    //alert(JSON.stringify(data.result));
+
+                  }else if(data.status == 'failed'){
+                    alert('failed-->'+data.status);
+                  }else{
+                    alert('duplicate-->'+data.status);
+                  }
+                  
+              },
+              error: function(error) {
+                  console.log(error);
+              }
+          });
+      }
+    </script>
   </body>
 </html>
+
+   

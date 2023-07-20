@@ -138,6 +138,20 @@
                 
               </ul>
             </li>
+            <li class="menu-item">
+              <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-user-check"></i>
+                <div data-i18n="Extended UI">Attendance</div>
+              </a>
+              <ul class="menu-sub">
+              
+                <li class="menu-item">
+                  <a href="employee-add-attendance" class="menu-link">
+                    <div data-i18n="Perfect Scrollbar">Add Attendance</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </aside>
         <!-- / Menu -->
@@ -251,37 +265,37 @@
                     <div class="card-body">
                       <form id="formAccountDeactivation" onsubmit="return false">
                         <div class="row">
-							<div class="mb-3 col-md-4">
-								<label for="nameExLarge" class="form-label">First Name</label>
-								<input type="text" id="nameExLarge" class="form-control" placeholder="First Name" /> 
-							</div>
-							<div class="mb-3 col-md-4">
-								<label for="nameExLarge" class="form-label">Middle Name</label>
-								<input type="tel" id="nameExLarge" class="form-control" placeholder="Middle Name" /> 
-							</div>
-							<div class="mb-3 col-md-4">
-								<label for="nameExLarge" class="form-label">Last Name</label>
-								<input type="text" id="nameExLarge" class="form-control" placeholder="Last Name" /> 
-							</div>
-						
-							<div class="mb-3 col-md-4">
-								<label for="emailCandidate" class="form-label">Email</label>
-								<input type="text" id="emailCandidate" class="form-control" placeholder="name@example.com" /> 
-							</div>
-							<div class="mb-3 col-md-4">
-								<label for="phoneNumber" class="form-label">Phone Number</label>
-								<div class="input-group input-group-merge">
-									<span class="input-group-text">IN (+91)</span>
-									<input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" />
-								</div>
-							</div>
-							<div class="mb-3 col-md-4">
-								<label for="alternatePhoneNumber" class="form-label">Alterate Phone Number</label>
-								<div class="input-group input-group-merge">
-									<span class="input-group-text">IN (+91)</span>
-									<input type="text" id="alternatePhoneNumber" name="alternatePhoneNumber" class="form-control" />
-								</div>
-							</div>
+                          <div class="mb-3 col-md-4">
+                            <label for="nameExLarge" class="form-label">First Name</label>
+                            <input type="text" id="nameExLarge" class="form-control" placeholder="First Name" /> 
+                          </div>
+                          <div class="mb-3 col-md-4">
+                            <label for="nameExLarge" class="form-label">Middle Name</label>
+                            <input type="tel" id="nameExLarge" class="form-control" placeholder="Middle Name" /> 
+                          </div>
+                          <div class="mb-3 col-md-4">
+                            <label for="nameExLarge" class="form-label">Last Name</label>
+                            <input type="text" id="nameExLarge" class="form-control" placeholder="Last Name" /> 
+                          </div>
+                        
+                          <div class="mb-3 col-md-4">
+                            <label for="emailCandidate" class="form-label">Email</label>
+                            <input type="text" id="emailCandidate" class="form-control" placeholder="name@example.com" /> 
+                          </div>
+                          <div class="mb-3 col-md-4">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <div class="input-group input-group-merge">
+                              <span class="input-group-text">IN (+91)</span>
+                              <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" />
+                            </div>
+                          </div>
+                          <div class="mb-3 col-md-4">
+                            <label for="alternatePhoneNumber" class="form-label">Alterate Phone Number</label>
+                            <div class="input-group input-group-merge">
+                              <span class="input-group-text">IN (+91)</span>
+                              <input type="text" id="alternatePhoneNumber" name="alternatePhoneNumber" class="form-control" />
+                            </div>
+                          </div>
                         </div>
                       </form>
                     </div>

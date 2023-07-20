@@ -1,25 +1,45 @@
 ﻿<Properties StartupConfiguration="{9E371AEC-1605-44EE-8F17-D782226AFD6A}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HRManagement/App_Start/RouteConfig.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HRManagement/DAOImpl/DepartmentDaoImpl.cs">
     <Files>
-      <File FileName="HRManagement/App_Start/RouteConfig.cs" Line="29" Column="42" />
-      <File FileName="HRManagement/Views/Administration/AllCandidate.aspx" Line="1" Column="1" />
-      <File FileName="HRManagement/Views/Administration/AllCandidate.aspx.cs" Line="5" Column="44" />
-      <File FileName="HRManagement/Views/Administration/AllCandidate.aspx.designer.cs" Line="5" Column="44" />
-      <File FileName="HRManagement/Views/Administration/CandidateRegistration.aspx.cs" Line="5" Column="44" />
-      <File FileName="HRManagement/Views/Administration/CandidateRegistration.aspx.designer.cs" Line="12" Column="1" />
-      <File FileName="HRManagement/Views/Employee/Departments.aspx" Line="1" Column="1" />
+      <File FileName="HRManagement/Util/DBTableChecker.cs" Line="1" Column="1" />
+      <File FileName="HRManagement/Util/DBTableQuery.cs" Line="1" Column="1" />
+      <File FileName="HRManagement/DAOImpl/DepartmentDaoImpl.cs" Line="38" Column="43" />
+      <File FileName="HRManagement/Views/Employee/Departments.aspx.cs" Line="69" Column="1" />
+      <File FileName="HRManagement/Handler/AddDepartmentHandler.cs" Line="59" Column="40" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="HRManagement" expanded="True">
             <Node name="HRManagement" expanded="True">
-              <Node name="App_Start" expanded="True">
-                <Node name="RouteConfig.cs" selected="True" />
+              <Node name="References" expanded="True" />
+              <Node name="App_Data" expanded="True">
+                <Node name="Database" expanded="True" />
               </Node>
-              <Node name="Scripts" expanded="True" />
+              <Node name="App_Start" expanded="True" />
+              <Node name="Content" expanded="True">
+                <Node name="assets" expanded="True">
+                  <Node name="js" expanded="True" />
+                  <Node name="vendor" expanded="True">
+                    <Node name="css" expanded="True" />
+                    <Node name="fonts" expanded="True" />
+                    <Node name="js" expanded="True" />
+                    <Node name="libs" expanded="True">
+                      <Node name="jquery" expanded="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="DAO" expanded="True" />
+              <Node name="DAOImpl" expanded="True">
+                <Node name="DepartmentDaoImpl.cs" selected="True" />
+              </Node>
+              <Node name="Handler" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Util" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Administration" expanded="True">
+                  <Node name="AddAttendance.aspx" expanded="True" />
                   <Node name="AllCandidate.aspx" expanded="True" />
                   <Node name="CandidateRegistration.aspx" expanded="True" />
                 </Node>
@@ -27,6 +47,7 @@
                   <Node name="Departments.aspx" expanded="True" />
                 </Node>
               </Node>
+              <Node name="Global.asax" expanded="True" />
             </Node>
           </Node>
         </State>

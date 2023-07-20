@@ -32,7 +32,7 @@ namespace HRManagement.App_Start
 
             routes.MapPageRoute("job-candidate-registration", "job-candidate-registration", "~/Views/Administration/CandidateRegistration.aspx");
             routes.MapPageRoute("job-candidates", "job-candidates", "~/Views/Administration/AllCandidate.aspx");
-
+            routes.MapPageRoute("employee-add-attendance", "employee-add-attendance", "~/Views/Administration/AddAttendance.aspx");
 
         }
     }

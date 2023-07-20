@@ -31,8 +31,17 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Core" />
     <Reference Include="Microsoft.AspNet.FriendlyUrls">
       <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -207,20 +216,18 @@
     <Content Include="Content\scss\_custom-variables\_pages.scss" />
     <Content Include="Content\scss\_custom-variables\_libs.scss" />
     <Content Include="Views\Login.aspx" />
-    <Content Include="packages.config" />
     <Content Include="Views\ForgotPassword.aspx" />
     <Content Include="Views\Registration.aspx" />
     <Content Include="Views\Dashboard.aspx" />
     <Content Include="Content\assets\img\avatars\empty-user.jpg" />
-    <Content Include="Content\assets\vendor\js\dataTables.bootstrap4.min.js" />
-    <Content Include="Content\assets\vendor\js\jquery.dataTables.min.js" />
-    <Content Include="Content\assets\vendor\css\dataTables.bootstrap4.min.css" />
     <Content Include="Views\Administration\AllCandidate.aspx" />
     <Content Include="Views\Administration\CandidateRegistration.aspx" />
     <Content Include="Views\Employee\AllEmployee.aspx" />
     <Content Include="Views\Employee\Departments.aspx" />
     <Content Include="Views\Employee\Designations.aspx" />
     <Content Include="Views\Employee\EmployeeRegistration.aspx" />
+    <Content Include="Views\Administration\AddAttendance.aspx" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -287,6 +294,23 @@
     <Compile Include="Views\Employee\EmployeeRegistration.aspx.designer.cs">
       <DependentUpon>EmployeeRegistration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administration\AddAttendance.aspx.cs">
+      <DependentUpon>AddAttendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\AddAttendance.aspx.designer.cs">
+      <DependentUpon>AddAttendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Path.cs" />
+    <Compile Include="Util\PasswordGenerator.cs" />
+    <Compile Include="Util\DBConnection.cs" />
+    <Compile Include="Util\U.cs" />
+    <Compile Include="Util\HRManagementTable.cs" />
+    <Compile Include="Util\DBTableChecker.cs" />
+    <Compile Include="Util\DBTableQuery.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="DAO\DepartmentDao.cs" />
+    <Compile Include="DAOImpl\DepartmentDaoImpl.cs" />
+    <Compile Include="Handler\AddDepartmentHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,10 +321,19 @@
     <Folder Include="Views\" />
     <Folder Include="Views\Employee\" />
     <Folder Include="Views\Administration\" />
+    <Folder Include="App_Data\Database\" />
+    <Folder Include="Util\" />
+    <Folder Include="App_Data\Employee_Resume\" />
+    <Folder Include="App_Data\Interview_Resume\" />
+    <Folder Include="Models\" />
+    <Folder Include="DAO\" />
+    <Folder Include="DAOImpl\" />
+    <Folder Include="Handler\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\assets\vendor\fonts\boxicons\boxicons.woff2" />
     <None Include="Content\assets\img\favicon\favicon.ico" />
+    <None Include="App_Data\Database\hrmanage.db" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
