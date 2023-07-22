@@ -45,7 +45,29 @@ namespace HRManagement.DAOImpl
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            // Create the SQL command to delete the record
+            string deleteQuery = $"DELETE FROM {_tableName} WHERE Id = @Id";
+
+            using (SqliteCommand command = new SqliteCommand(deleteQuery, _conn))
+            {
+                // Insert multiple records using a transaction
+                using (SqliteTransaction transaction = _conn.BeginTransaction())
+                {
+                    // Add the ID parameter to the command
+                    command.Parameters.AddWithValue("@Id", id);
+
+                    // Execute the DELETE command
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    transaction.Commit();
+
+                    if (rowsAffected > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
 

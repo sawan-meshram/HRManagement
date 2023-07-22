@@ -292,115 +292,32 @@
                       <div class="dropdown-menu">
                         <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
                         <i class="bx bx-edit-alt me-1"></i> Edit </a>
-                        <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDepartment">
+                        <a class="dropdown-item deleteBtn" href="javascript:void(0);" > <!--data-bs-toggle="modal" data-bs-target="#deleteDepartment"-->
                         <i class="bx bx-trash me-1"></i> Delete </a>
                       </div>
                       </div>
                     </td>
                   </tr>
                 <% } %>
-                <!--
-                <tr>
-                <td>1</td>
-                <td><strong>Web Development Project</strong></td>
-                <td class="text-end">
-                  <div class="dropdown">
-                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                    <i class="bx bx-dots-vertical-rounded"></i>
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
-                    <i class="bx bx-edit-alt me-1"></i> Edit </a>
-                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDepartment">
-                    <i class="bx bx-trash me-1"></i> Delete </a>
-                  </div>
-                  </div>
-                </td>
-                </tr>
-               
-                <tr>
-                <td>2</td>
-                <td> <strong>Application Development</strong></td>
-                <td class="text-end">
-                  <div class="dropdown">
-                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                    <i class="bx bx-dots-vertical-rounded"></i>
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
-                      <i class="bx bx-edit-alt me-1"></i> Edit </a>
-                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDepartment">
-                      <i class="bx bx-trash me-1"></i> Delete </a>
-                  </div>
-                  </div>
-                </td>
-                </tr>
-                <tr>
-                <td>3</td>
-                <td><strong>Android Development</strong></td>
-                <td class="text-end">
-                  <div class="dropdown">
-                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                    <i class="bx bx-dots-vertical-rounded"></i>
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
-                      <i class="bx bx-edit-alt me-1"></i> Edit </a>
-                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDepartment">
-                      <i class="bx bx-trash me-1"></i> Delete </a>
-                  </div>
-                  </div>
-                </td>
-                </tr>
-                --> 
+                
               </tbody>
               </table>
             </div> <!--Table-->
-            <!--
-            <div class="row">
-              <div class="col mt-3 demo-inline-spacing">
-                <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-end">
-                  <li class="page-item prev">
-                  <a class="page-link" href="javascript:void(0);">
-                    <i class="tf-icon bx bx-chevrons-left"></i>
-                  </a>
-                  </li>
-                  <li class="page-item">
-                  <a class="page-link" href="javascript:void(0);">1</a>
-                  </li>
-                  <li class="page-item">
-                  <a class="page-link" href="javascript:void(0);">2</a>
-                  </li>
-                  <li class="page-item active">
-                  <a class="page-link" href="javascript:void(0);">3</a>
-                  </li>
-                  <li class="page-item">
-                  <a class="page-link" href="javascript:void(0);">4</a>
-                  </li>
-                  <li class="page-item">
-                  <a class="page-link" href="javascript:void(0);">5</a>
-                  </li>
-                  <li class="page-item next">
-                  <a class="page-link" href="javascript:void(0);">
-                    <i class="tf-icon bx bx-chevrons-right"></i>
-                  </a>
-                  </li>
-                </ul>
-                </nav>
-              </div>
-            </div>-->  <!-- Row-->
+            
             
 				  </div> <!-- Card -->
                  
                 </div> <!-- Col -->
               </div> <!-- Row -->
               
-        <div id="successToast" class="bs-toast toast bg-info m-2 toast-placement-ex top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
-          <div class="toast-header"> <i class="bx bx-bell me-2"></i> <div class="me-auto fw-semibold">Success.</div><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> </div>
+        <div id="successToast" class="bs-toast toast bg-success m-2 toast-placement-ex top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+          <div class="toast-header"> <i class="bx bx-bell me-2"></i> <div class="me-auto fw-semibold">Success</div><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> </div>
           <div class="toast-body">Department added successfully.</div>
         </div>
-              
+        <div id="failedToast" class="bs-toast toast bg-danger m-2 toast-placement-ex top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+          <div class="toast-header"> <i class="bx bx-bell me-2"></i> <div class="me-auto fw-semibold">Failed</div><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> </div>
+          <div class="toast-body">Failed due to internal problem.</div>
+        </div> 
             
         <!--addDepartment-->
 			  <div class="modal fade" id="addDepartment" tabindex="-1" aria-hidden="true">
@@ -416,13 +333,13 @@
               <div class="col mb-3">
                 <label for="departmentName" class="form-label">Department Name</label>
                 <input type="text" id="departmentName" name="departmentName" class="form-control" placeholder="For ex. 'Wed Development'" required />
-                <div id="deptMsg" class="my-2 alert alert-danger" role="alert">Please provide a department name.</div>
+                <div id="deptMsg" class="my-2 alert alert-danger" role="alert"></div>
               </div>
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
-              <button type="button" class="btn btn-primary" id="submit_form" onclick="addDepartmentFunction()">Add Department</button>
+              <button type="button" class="btn btn-primary" id="submit_form" onclick="addDepartmentFunction()">Add Department</button> 
             </div>
           </form>
 				  </div>
@@ -451,21 +368,21 @@
 				</div>
 			  </div>
 			  <div class="modal fade" id="deleteDepartment" role="dialog">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-				  <div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Delete Department</h5>
-					</div>
-					<div class="modal-body">
-						<h6 class="mb-0">Are you sure want to delete?</h6>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
-						<button type="button" class="btn btn-primary">Delete</button>
-					</div>
-					  
-				  </div>
-				</div>
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Delete Department</h5>
+            </div>
+            <div class="modal-body">
+              <h6 class="mb-0">Are you sure want to delete?</h6>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
+              <button type="button" class="btn btn-primary" id="deleteRecordBtn">Delete</button>
+            </div>
+              
+            </div>
+          </div>
 			  </div>
 
               </div> <!-- Container -->
@@ -513,17 +430,21 @@
 
     <script type="text/javascript">
       $(document).ready( function () {
-          $('#deptTable').DataTable();
+          var dTable = $('#deptTable').DataTable();
           $('#deptMsg').hide();
       } );
     </script>
     <script type="text/javascript">
       function addDepartmentFunction() {
+          var msgDiv = document.getElementById('deptMsg');
+
           var name = $("#departmentName").val();
           name = name.trim();
           if (name.length == 0 || name == "") {
+            msgDiv.innerText ='Please provide a department name.';
             $('#deptMsg').show();
             $('#deptMsg').delay(3000).fadeOut();
+            
             return false;
           }else{
             $('#deptMsg').hide();
@@ -538,30 +459,80 @@
               data: JSON.stringify(json),
               dataType: "json",
               success: function(data) {
-                //alert(resp.status);
-                  //alert(JSON.stringify(resp));
-                  //alert();
                   //var data = JSON.parse(JSON.stringify(resp));
+                  console.log(data.status);
                   if(data.status == 'success'){
                     $('#addDepartment').modal('hide');
+                    //alert(data.result.Id);
                     var myToast = document.getElementById('successToast')
                     var successToast = new bootstrap.Toast(myToast);
                     successToast.show()
 
-                    //alert(JSON.stringify(data.result));
+                    var dTable = $('#deptTable').DataTable();
 
+                    dTable.row.add($('<tr><td>'+data.result.Id+'</td><td><strong>'+data.result.Name+'</strong></td><td class="text-end"><div class="dropdown"><button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">'+
+                    '<i class="bx bx-dots-vertical-rounded"></i></button><div class="dropdown-menu"><a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">'+
+                    '<i class="bx bx-edit-alt me-1"></i> Edit </a><a class="dropdown-item deleteBtn" href="javascript:void(0);">'+
+                    '<i class="bx bx-trash me-1"></i> Delete </a></div></div></td></tr>')).draw();
                   }else if(data.status == 'failed'){
-                    alert('failed-->'+data.status);
+                    //console.log(data.status);
+                    $('#addDepartment').modal('hide');
+                    var myToast = document.getElementById('failedToast')
+                    var failedToast = new bootstrap.Toast(myToast);
+                    failedToast.show()
                   }else{
-                    alert('duplicate-->'+data.status);
+                    //console.log(data.status);
+                    msgDiv.innerText = 'Found duplicate a department name.';
+                    $('#deptMsg').show();
+                    $('#deptMsg').delay(3000).fadeOut();
                   }
-                  
               },
               error: function(error) {
                   console.log(error);
               }
           });
       }
+
+      $('#deptTable tbody').on( 'click', '.deleteBtn', function () {
+        //$('#deleteDepartment').modal('show');
+        var dTable = $('#deptTable').DataTable();
+        var tr = dTable.row($(this).parents('tr'));
+
+
+        //$('#deleteDepartment').on('click','#deleteRecordBtn',function(){
+          //alert("button");
+          //console.log(dTable.row($(this).closest('tr')).data() ); //used to print table row data
+          //dTable.row($(this).parents('tr')).remove().draw(false); //used to remove table row
+
+          //console.log(tr.data());
+          //$('#deleteDepartment').modal('hide');
+        //});
+        
+        
+          $.ajax({
+            type: "POST",
+            url: 'deleteDepartment?id=' + tr.data()[0],
+            dataType: "json",
+            success: function (msg) {
+              console.log(msg.status);
+              if(msg.status == 'success'){
+                tr.remove().draw();
+              }else{
+                //console.log(JSON.stringify(msg));
+                var myToast = document.getElementById('failedToast')
+                var failedToast = new bootstrap.Toast(myToast);
+                failedToast.show()
+              }
+            },
+            error: function (e) {
+                console.log(e)
+                // closeSearchModal();
+            }
+          });
+        
+      });
+      
+      
     </script>
   </body>
 </html>

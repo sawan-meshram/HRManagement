@@ -32,6 +32,7 @@ namespace HRManagement.Handler
 
             Console.WriteLine("jsonString :" + jsonString);
             JObject res = new JObject();
+            DBConnection dbConn = null;
             try
             {
                 Department dept = JsonConvert.DeserializeObject<Department>(jsonString);
@@ -42,7 +43,7 @@ namespace HRManagement.Handler
 
                 dept.Name = U.ToTitleCase(dept.Name);
 
-                DBConnection dbConn = new DBConnection.DBConnectionBuilder().BuildConnection();
+                dbConn = new DBConnection.DBConnectionBuilder().BuildConnection();
 
                 if (!DBTableChecker.IsTableExists(HRManagementTable.DEPARTMENT.ToString(), dbConn.Connection))
                 {
@@ -64,7 +65,7 @@ namespace HRManagement.Handler
                     dup = true;
                 }
 
-                dbConn.Disconnect();
+
                 context.Response.ContentType = "application/json";
 
                 if (inserted)
@@ -84,15 +85,21 @@ namespace HRManagement.Handler
                     else res["status"] = "failed";
                 }
                 Console.WriteLine("result ::"+res.ToString());
-                context.Response.Write(JsonConvert.SerializeObject(res));
+                //context.Response.Write(JsonConvert.SerializeObject(res));
 
             }
             catch (Exception e)
             {
-                res["status"] ="failed";
+                res["status"] = "error";
                 Console.WriteLine(e);
-                context.Response.Write(JsonConvert.SerializeObject(res));
+                //context.Response.Write(JsonConvert.SerializeObject(res));
             }
+            finally
+            {
+                if(dbConn != null)
+                    dbConn.Disconnect();
+            }
+            context.Response.Write(JsonConvert.SerializeObject(res));
         }
     }
 }

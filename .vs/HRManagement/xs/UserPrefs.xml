@@ -1,11 +1,13 @@
 ﻿<Properties StartupConfiguration="{9E371AEC-1605-44EE-8F17-D782226AFD6A}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HRManagement/DAOImpl/DepartmentDaoImpl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HRManagement/Handler/DeleteDepartmentHandler.cs">
     <Files>
       <File FileName="HRManagement/Util/DBTableChecker.cs" Line="1" Column="1" />
       <File FileName="HRManagement/Util/DBTableQuery.cs" Line="1" Column="1" />
-      <File FileName="HRManagement/DAOImpl/DepartmentDaoImpl.cs" Line="38" Column="43" />
       <File FileName="HRManagement/Views/Employee/Departments.aspx.cs" Line="69" Column="1" />
-      <File FileName="HRManagement/Handler/AddDepartmentHandler.cs" Line="59" Column="40" />
+      <File FileName="HRManagement/DAOImpl/DepartmentDaoImpl.cs" Line="60" Column="37" />
+      <File FileName="HRManagement/Handler/AddDepartmentHandler.cs" Line="100" Column="34" />
+      <File FileName="HRManagement/Handler/DeleteDepartmentHandler.cs" Line="14" Column="41" />
+      <File FileName="HRManagement/Web.config" Line="13" Column="7" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -31,10 +33,10 @@
                 </Node>
               </Node>
               <Node name="DAO" expanded="True" />
-              <Node name="DAOImpl" expanded="True">
-                <Node name="DepartmentDaoImpl.cs" selected="True" />
+              <Node name="DAOImpl" expanded="True" />
+              <Node name="Handler" expanded="True">
+                <Node name="DeleteDepartmentHandler.cs" selected="True" />
               </Node>
-              <Node name="Handler" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Util" expanded="True" />
               <Node name="Views" expanded="True">
