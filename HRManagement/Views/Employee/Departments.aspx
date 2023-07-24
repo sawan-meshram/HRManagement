@@ -290,9 +290,9 @@
                         <i class="bx bx-dots-vertical-rounded"></i>
                       </button>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">
+                        <a class="dropdown-item updateBtn" href="javascript:void(0);" onclick="editDept(this)"> <!--data-bs-toggle="modal" data-bs-target="#editDepartment"-->
                         <i class="bx bx-edit-alt me-1"></i> Edit </a>
-                        <a class="dropdown-item deleteBtn" href="javascript:void(0);" > <!--data-bs-toggle="modal" data-bs-target="#deleteDepartment"-->
+                        <a class="dropdown-item deleteBtn" onclick="deleteDept(this)"> <!--data-bs-toggle="modal" data-bs-target="#deleteDepartment"-->
                         <i class="bx bx-trash me-1"></i> Delete </a>
                       </div>
                       </div>
@@ -312,11 +312,11 @@
               
         <div id="successToast" class="bs-toast toast bg-success m-2 toast-placement-ex top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
           <div class="toast-header"> <i class="bx bx-bell me-2"></i> <div class="me-auto fw-semibold">Success</div><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> </div>
-          <div class="toast-body">Department added successfully.</div>
+          <div class="toast-body" id="toastMsg">Department added successfully.</div>
         </div>
         <div id="failedToast" class="bs-toast toast bg-danger m-2 toast-placement-ex top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
           <div class="toast-header"> <i class="bx bx-bell me-2"></i> <div class="me-auto fw-semibold">Failed</div><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> </div>
-          <div class="toast-body">Failed due to internal problem.</div>
+          <div class="toast-body" id="toastFailMsg">Failed due to internal problem.</div>
         </div> 
             
         <!--addDepartment-->
@@ -345,28 +345,31 @@
 				  </div>
 				</div>
 			  </div> <!--/ addDepartment-->
+        <!--editDepartment-->
 			  <div id="editDepartment" class="modal fade" role="dialog">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-				  <div class="modal-content">
-					<div class="modal-header">
-					  <h5 class="modal-title">Edit Department</h5>
-					  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-					  <form>
-						<div class="form-group">
-						  <label>Department Name <span class="text-danger">*</span>
-						  </label>
-						  <input class="form-control" value="IT Management" type="text" />
-						</div>
-					  </form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">Save</button>
-					</div>
-				  </div>
-				</div>
-			  </div>
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Edit Department</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+              <div class="form-group">
+                <label>Department Name <span class="text-danger">*</span>
+                </label>
+                <input class="form-control" id="editField" type="text" />
+                <div id="deptMsg1" class="my-2 alert alert-danger" role="alert"></div>
+              </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="editForm" onclick="updateDeptFunction()">Save</button>
+            </div>
+            </div>
+          </div>
+			  </div><!--/ editDepartment-->
+        <!--deleteDepartment-->
 			  <div class="modal fade" id="deleteDepartment" role="dialog">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -378,12 +381,13 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
-              <button type="button" class="btn btn-primary" id="deleteRecordBtn">Delete</button>
+              <button type="button" class="btn btn-primary" id="deleteRecordBtn" onclick="deleteDeptFunction()">Delete</button>
             </div>
               
             </div>
           </div>
-			  </div>
+			  </div> <!--/ deleteDepartment-->
+
 
               </div> <!-- Container -->
             <!-- / Content Wrapper -->
@@ -432,6 +436,7 @@
       $(document).ready( function () {
           var dTable = $('#deptTable').DataTable();
           $('#deptMsg').hide();
+          $('#deptMsg1').hide();
       } );
     </script>
     <script type="text/javascript">
@@ -464,6 +469,7 @@
                   if(data.status == 'success'){
                     $('#addDepartment').modal('hide');
                     //alert(data.result.Id);
+                    document.getElementById('toastMsg').innerText = 'Department added successfully.';
                     var myToast = document.getElementById('successToast')
                     var successToast = new bootstrap.Toast(myToast);
                     successToast.show()
@@ -471,12 +477,14 @@
                     var dTable = $('#deptTable').DataTable();
 
                     dTable.row.add($('<tr><td>'+data.result.Id+'</td><td><strong>'+data.result.Name+'</strong></td><td class="text-end"><div class="dropdown"><button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">'+
-                    '<i class="bx bx-dots-vertical-rounded"></i></button><div class="dropdown-menu"><a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDepartment">'+
-                    '<i class="bx bx-edit-alt me-1"></i> Edit </a><a class="dropdown-item deleteBtn" href="javascript:void(0);">'+
+                    '<i class="bx bx-dots-vertical-rounded"></i></button><div class="dropdown-menu"><a class="dropdown-item updateBtn" href="javascript:void(0);" onclick="editDept(this)">'+
+                    '<i class="bx bx-edit-alt me-1"></i> Edit </a><a class="dropdown-item deleteBtn" onclick="deleteDept(this)">'+
                     '<i class="bx bx-trash me-1"></i> Delete </a></div></div></td></tr>')).draw();
                   }else if(data.status == 'failed'){
                     //console.log(data.status);
                     $('#addDepartment').modal('hide');
+
+                    document.getElementById('toastFailMsg').innerText = 'Failed due to internal problem.';
                     var myToast = document.getElementById('failedToast')
                     var failedToast = new bootstrap.Toast(myToast);
                     failedToast.show()
@@ -485,14 +493,19 @@
                     msgDiv.innerText = 'Found duplicate a department name.';
                     $('#deptMsg').show();
                     $('#deptMsg').delay(3000).fadeOut();
-                  }
+                  }                  
+                  $("#departmentName").val('')
               },
               error: function(error) {
                   console.log(error);
+                  document.getElementById('toastFailMsg').innerText = 'Failed due to server problem.';
+                  var myToast = document.getElementById('failedToast')
+                  var failedToast = new bootstrap.Toast(myToast);
+                  failedToast.show()
               }
           });
       }
-
+      /*
       $('#deptTable tbody').on( 'click', '.deleteBtn', function () {
         //$('#deleteDepartment').modal('show');
         var dTable = $('#deptTable').DataTable();
@@ -529,10 +542,99 @@
                 // closeSearchModal();
             }
           });
-        
+        return;
       });
-      
-      
+      */
+      var selectedRow;
+      function deleteDept(link){
+
+        // Store the data of the selected row in the global variable
+        selectedRow = $('#deptTable').DataTable().row($(link).closest('tr'));
+        $('#deleteDepartment').modal('show');
+      }
+      function deleteDeptFunction(){
+        $.ajax({
+            type: "POST",
+            url: 'deleteDepartment?id=' + selectedRow.data()[0],
+            dataType: "json",
+            success: function (msg) {
+              console.log(msg.status);
+              if(msg.status == 'success'){
+                var table = $('#deptTable').DataTable();
+                table.row(selectedRow).remove().draw();
+                
+                $('#deleteDepartment').modal('hide');
+
+                document.getElementById('toastMsg').innerText = 'Department deleted successfully.';
+                var myToast = document.getElementById('successToast')
+                var successToast = new bootstrap.Toast(myToast);
+                successToast.show()
+
+              }else{
+                //console.log(JSON.stringify(msg));
+                document.getElementById('toastFailMsg').innerText = 'Failed due to internal problem.';
+                var myToast = document.getElementById('failedToast')
+                var failedToast = new bootstrap.Toast(myToast);
+                failedToast.show()
+              }
+            },
+            error: function (e) {
+                console.log(e)
+                // closeSearchModal();
+                document.getElementById('toastFailMsg').innerText = 'Failed due to server problem.';
+                var myToast = document.getElementById('failedToast')
+                var failedToast = new bootstrap.Toast(myToast);
+                failedToast.show()
+            }
+          });
+      }
+      function editDept(link) {
+        var table = $('#deptTable').DataTable();
+        var row = table.row($(link).closest('tr'));
+
+        // Store the data of the selected row in the global variable
+        selectedRow = row;
+
+        // Open the modal for editing
+        $("#editField").val(row.data()[1].replace('<strong>', '').replace('</strong>', '').trim());
+        $('#editDepartment').modal('show');
+      }
+
+      function updateDeptFunction(){
+          var rowData = selectedRow.data();
+          var name= rowData[1].replace('<strong>', '').replace('</strong>', '').trim()
+
+          var newName = $("#editField").val().trim();
+          if (newName.length == 0 || newName == "") {
+            document.getElementById('deptMsg1').innerText ='Please provide a department name.';
+            $('#deptMsg1').show();
+            $('#deptMsg1').delay(3000).fadeOut();
+            
+            return false;
+          }else if(newName.toLowerCase() === name.toLowerCase()){
+            document.getElementById('deptMsg1').innerText ='Please provide new department name.';
+            $('#deptMsg1').show();
+            $('#deptMsg1').delay(3000).fadeOut();
+            return false;
+          }else{
+            $('#deptMsg1').hide();
+            rowData[1] = '<strong>'+newName+'</strong>';
+            selectedRow.data(rowData);
+            selectedRow.draw('full-reset');
+
+            $("#editDepartment").modal("hide");
+
+            var json = {};
+            json.Id = rowData[0];
+            json.newName = rowData[1];
+            console.log(json);
+            document.getElementById('toastMsg').innerText = 'Department updated successfully.';
+            var myToast = document.getElementById('successToast')
+            var successToast = new bootstrap.Toast(myToast);
+            successToast.show()
+          } 
+      }
+     
     </script>
   </body>
 </html>

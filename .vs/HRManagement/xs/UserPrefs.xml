@@ -1,13 +1,14 @@
 ﻿<Properties StartupConfiguration="{9E371AEC-1605-44EE-8F17-D782226AFD6A}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HRManagement/Handler/DeleteDepartmentHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HRManagement/Web.config">
     <Files>
       <File FileName="HRManagement/Util/DBTableChecker.cs" Line="1" Column="1" />
       <File FileName="HRManagement/Util/DBTableQuery.cs" Line="1" Column="1" />
       <File FileName="HRManagement/Views/Employee/Departments.aspx.cs" Line="69" Column="1" />
-      <File FileName="HRManagement/DAOImpl/DepartmentDaoImpl.cs" Line="60" Column="37" />
-      <File FileName="HRManagement/Handler/AddDepartmentHandler.cs" Line="100" Column="34" />
-      <File FileName="HRManagement/Handler/DeleteDepartmentHandler.cs" Line="14" Column="41" />
-      <File FileName="HRManagement/Web.config" Line="13" Column="7" />
+      <File FileName="HRManagement/DAOImpl/DepartmentDaoImpl.cs" Line="97" Column="10" />
+      <File FileName="HRManagement/Handler/AddDepartmentHandler.cs" Line="44" Column="17" />
+      <File FileName="HRManagement/Handler/UpdateDepartmentHandler.cs" Line="14" Column="41" />
+      <File FileName="HRManagement/Handler/DeleteDepartmentHandler.cs" Line="22" Column="52" />
+      <File FileName="HRManagement/Web.config" Line="30" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -34,9 +35,7 @@
               </Node>
               <Node name="DAO" expanded="True" />
               <Node name="DAOImpl" expanded="True" />
-              <Node name="Handler" expanded="True">
-                <Node name="DeleteDepartmentHandler.cs" selected="True" />
-              </Node>
+              <Node name="Handler" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Util" expanded="True" />
               <Node name="Views" expanded="True">
@@ -50,6 +49,7 @@
                 </Node>
               </Node>
               <Node name="Global.asax" expanded="True" />
+              <Node name="Web.config" selected="True" />
             </Node>
           </Node>
         </State>

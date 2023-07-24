@@ -50,7 +50,6 @@ namespace HRManagement.DAOImpl
 
             using (SqliteCommand command = new SqliteCommand(deleteQuery, _conn))
             {
-                // Insert multiple records using a transaction
                 using (SqliteTransaction transaction = _conn.BeginTransaction())
                 {
                     // Add the ID parameter to the command
@@ -70,6 +69,32 @@ namespace HRManagement.DAOImpl
             return false;
         }
 
+        public bool Update(Department department)
+        {
+            // Create the SQL command to update the record
+            string updateQuery = $"UPDATE {_tableName} SET DEPARTMENT = @NewName WHERE ID = @Id";
+
+            using (SqliteCommand command = new SqliteCommand(updateQuery, _conn))
+            {
+                using (SqliteTransaction transaction = _conn.BeginTransaction())
+                {
+                    // Add the parameters to the command
+                    command.Parameters.AddWithValue("@NewName", department.Name);
+                    command.Parameters.AddWithValue("@Id", department.Id);
+
+                    // Execute the UPDATE command
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    transaction.Commit();
+
+                    if (rowsAffected > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
         public Department Read(int id)
         {
@@ -111,11 +136,6 @@ namespace HRManagement.DAOImpl
                 }
             }
             return departments;
-        }
-
-        public bool Update(Department department)
-        {
-            throw new NotImplementedException();
         }
 
         public bool IsRecordExists(string departmentName)

@@ -312,6 +312,7 @@
     <Compile Include="DAOImpl\DepartmentDaoImpl.cs" />
     <Compile Include="Handler\AddDepartmentHandler.cs" />
     <Compile Include="Handler\DeleteDepartmentHandler.cs" />
+    <Compile Include="Handler\UpdateDepartmentHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
