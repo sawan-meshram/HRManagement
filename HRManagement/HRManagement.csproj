@@ -313,6 +313,10 @@
     <Compile Include="Handler\AddDepartmentHandler.cs" />
     <Compile Include="Handler\DeleteDepartmentHandler.cs" />
     <Compile Include="Handler\UpdateDepartmentHandler.cs" />
+    <Compile Include="Models\Designation.cs" />
+    <Compile Include="DAO\DesignationDao.cs" />
+    <Compile Include="DAOImpl\DesignationDaoImpl.cs" />
+    <Compile Include="Handler\AddDesignationHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

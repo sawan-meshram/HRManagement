@@ -17,7 +17,7 @@ namespace HRManagement.Util
                     query = GetDepartmentCreateQuery(tableName);
                     break;
                 case HRManagementTable.DESIGNATION:
-                    query = GetDesignationCreateQuery(tableName);
+                    query = GetDesignationCreateQuery(tableName, HRManagementTable.DEPARTMENT);
                     break;
                 default: break;
             }
@@ -43,12 +43,17 @@ namespace HRManagement.Util
                 )";
         }
 
-        private static string GetDesignationCreateQuery(HRManagementTable tableName)
+        private static string GetDesignationCreateQuery(HRManagementTable tableName, HRManagementTable refTableName)
         {
             return "CREATE TABLE IF NOT EXISTS " + tableName +
                 @" (
                 ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, 
-                DESIGNATION TEXT NOT NULL
+                DESIGNATION TEXT NOT NULL,
+                DEPARTMENT_ID INTEGER,
+                FOREIGN KEY (DEPARTMENT_ID)
+                REFERENCES " + refTableName + @" (ID) 
+                    ON UPDATE SET NULL
+                    ON DELETE SET NULL
                 )";
         }
 

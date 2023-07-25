@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" Inherits="HRManagement.Views.Employee.Designations" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Designations.aspx.cs" Inherits="HRManagement.Views.Employee.Designations" %>
+
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="/Content/assets/" data-template="vertical-menu-template-free">
   <head>
@@ -17,11 +18,11 @@
     <!-- Core CSS -->
     <link rel="stylesheet" href="/Content/assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="/Content/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-	<link rel="stylesheet" href="/Content/assets/vendor/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="/Content/assets/css/demo.css" />
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="/Content/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css" />
+
     <!-- Page CSS -->
     <!-- Helpers -->
     <script src="/Content/assets/vendor/js/helpers.js"></script>
@@ -266,8 +267,9 @@
                   -->
 				  <div class="card mb-4">
 					<h5 class="card-header">Designation Names</h5>
+          <hr class="my-3" />
 					<div class="table-responsive text-nowrap">
-					  <table class="table table-striped datatable">
+					  <table class="table table-striped datatable" id="designationTable">
 						<thead>
 						  <tr>
 							<th>#</th>
@@ -277,24 +279,28 @@
 						  </tr>
 						</thead>
 						<tbody class="table-border-bottom-0">
-						  <tr>
-							<td>1</td>
-							<td>Full Stack Developer</td>
-							<td>Web Development Project</td>
-							<td class="text-end">
-							  <div class="dropdown">
-								<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-								  <i class="bx bx-dots-vertical-rounded"></i>
-								</button>
-								<div class="dropdown-menu">
-								  <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDesignation">
-									<i class="bx bx-edit-alt me-1"></i> Edit </a>
-								  <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDesignation">
-									<i class="bx bx-trash me-1"></i> Delete </a>
-								</div>
-							  </div>
-							</td>
-						  </tr>
+              <% foreach (var designation in designations) { %>
+              <tr>
+                <td><%= designation.Id %></td>
+                <td><strong><%= designation.Name %></strong></td>
+                <td><%= designation.Department.Name %></td>
+                <td class="text-end">
+                  <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDesignation">
+                    <i class="bx bx-edit-alt me-1"></i> Edit </a>
+                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDesignation">
+                    <i class="bx bx-trash me-1"></i> Delete </a>
+                  </div>
+                  </div>
+                </td>
+              </tr>
+              <% } %>
+              <!--
+						  
 						  <tr>
 							<td>2</td>
 							<td>Java Developer</td>
@@ -331,52 +337,19 @@
 							  </div>
 							</td>
 						  </tr>
+              -->
 						</tbody>
 					  </table>
 					</div> <!--Table-->
 					
-					<div class="row">
-						<div class="col mt-3 demo-inline-spacing">
-							<nav aria-label="Page navigation">
-							<ul class="pagination justify-content-end">
-								<li class="page-item prev">
-								<a class="page-link" href="javascript:void(0);">
-									<i class="tf-icon bx bx-chevrons-left"></i>
-								</a>
-								</li>
-								<li class="page-item">
-								<a class="page-link" href="javascript:void(0);">1</a>
-								</li>
-								<li class="page-item">
-								<a class="page-link" href="javascript:void(0);">2</a>
-								</li>
-								<li class="page-item active">
-								<a class="page-link" href="javascript:void(0);">3</a>
-								</li>
-								<li class="page-item">
-								<a class="page-link" href="javascript:void(0);">4</a>
-								</li>
-								<li class="page-item">
-								<a class="page-link" href="javascript:void(0);">5</a>
-								</li>
-								<li class="page-item next">
-								<a class="page-link" href="javascript:void(0);">
-									<i class="tf-icon bx bx-chevrons-right"></i>
-								</a>
-								</li>
-							</ul>
-							</nav>
-						</div>
-					</div> <!-- Row-->
-
-
+					
 				  </div> <!-- Card -->
                  
                 </div> <!-- Col -->
               </div> <!-- Row -->
-
+        <!-- addDesignation-->
 			  <div class="modal fade" id="addDesignation" tabindex="-1" aria-hidden="true">
-				<div class="modal-dialog modal-dialog-centered" role="document">
+				  <div class="modal-dialog modal-dialog-centered" role="document">
 				  <div class="modal-content">
 					<div class="modal-header">
 					  <h5 class="modal-title" id="exampleModalLabel2">Add Designation</h5>
@@ -386,27 +359,35 @@
 					  <div class="row">
 						<div class="col mb-3">
 						  <label for="designationName" class="form-label">Designation Name <span class="text-danger">*</span></label>
-						  <input type="text" id="designationName" class="form-control" placeholder="For ex. 'Wed Designer' or 'Java Developer'" />
+						  <input type="text" id="designationName" class="form-control" placeholder="For ex. 'Wed Designer' or 'Java Developer'" required />
+              <div id="designationMsg" class="my-2 alert alert-danger" role="alert"></div>
 						</div>
 					  </div>
 					  <div class="row">
 						<div class="col mb-3">
 						  <label for="departmentName" class="form-label">Department <span class="text-danger">*</span></label>
-                            <select id="departmentName" class="select2 form-select">
-                              <option value="">Select Department</option>
-                              <option value="Web Development">Web Development</option>
-                              <option value="Application Development">Application Development</option>
-                            </select>
+              <select id="departmentName" class="select2 form-select">
+                <option value="">Select Department</option>
+                <% foreach (var dept in departments) { %>
+                  <option dept-id="<%= dept.Id %>" value="<%= dept.Name %>"><%= dept.Name %></option>
+                  <!--
+                <option value="Web Development">Web Development</option>
+                <option value="Application Development">Application Development</option>
+                -->
+                <% } %>
+              </select>
+              <div id="deptMsg" class="my-2 alert alert-danger" role="alert"></div>
 						</div>
 					  </div>
 					</div>
 					<div class="modal-footer">
 					  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
-					  <button type="button" class="btn btn-primary">Add Designation</button>
+					  <button type="button" class="btn btn-primary" onclick="addDesignationFunction()">Add Designation</button>
 					</div>
 				  </div>
 				</div>
-			  </div>
+			  </div>    <!--/ addDesignation-->
+        <!-- editDesignation-->
 			  <div id="editDesignation" class="modal fade" role="dialog">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 				  <div class="modal-content">
@@ -423,12 +404,17 @@
 					  </div>
 					  <div class="row">
 						<div class="col mb-3">
-						  <label for="departmentName" class="form-label">Department <span class="text-danger">*</span></label>
-                            <select id="departmentName" class="select2 form-select">
-                              <option value="">Select Department</option>
-                              <option value="Web Development">Web Development</option>
-                              <option value="Application Development">Application Development</option>
-                            </select>
+						  <label for="departmentName_1" class="form-label">Department <span class="text-danger">*</span></label>
+              <select id="departmentName_1" class="select2 form-select">
+                <option value="">Select Department</option>
+                <% foreach (var dept in departments) { %>
+                  <option dept-id="<%= dept.Id %>" value="<%= dept.Name %>"><%= dept.Name %></option>
+                  <!--
+                <option value="Web Development">Web Development</option>
+                <option value="Application Development">Application Development</option>
+                -->
+                <% } %>
+              </select>
 						</div>
 					  </div>
 					</div>
@@ -437,7 +423,8 @@
 					</div>
 				  </div>
 				</div>
-			  </div>
+			  </div> <!--/ editDesignation-->
+        <!-- deleteDesignation-->
 			  <div class="modal fade" id="deleteDesignation" role="dialog">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 				  <div class="modal-content">
@@ -454,7 +441,16 @@
 					  
 				  </div>
 				</div>
-			  </div>
+			  </div> <!--/ deleteDesignation-->
+
+        <div id="successToast" class="bs-toast toast bg-success m-2 toast-placement-ex top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+          <div class="toast-header"> <i class="bx bx-bell me-2"></i> <div class="me-auto fw-semibold">Success</div><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> </div>
+          <div class="toast-body" id="toastMsg">Designation added successfully.</div>
+        </div>
+        <div id="failedToast" class="bs-toast toast bg-danger m-2 toast-placement-ex top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+          <div class="toast-header"> <i class="bx bx-bell me-2"></i> <div class="me-auto fw-semibold">Failed</div><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> </div>
+          <div class="toast-body" id="toastFailMsg">Failed due to internal problem.</div>
+        </div> 
 
               </div> <!-- Container -->
             <!-- / Content Wrapper -->
@@ -483,19 +479,112 @@
     <script src="/Content/assets/vendor/libs/jquery/jquery.js"></script>
     <script src="/Content/assets/vendor/libs/popper/popper.js"></script>
     <script src="/Content/assets/vendor/js/bootstrap.js"></script>
-	<script src="/Content/assets/vendor/js/jquery.dataTables.min.js"></script>
-	<script src="/Content/assets/vendor/js/dataTables.bootstrap4.min.js"></script>
+	
 
     <script src="/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="/Content/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-    <!-- Vendors JS -->
-    <script src="/Content/assets/vendor/libs/apex-charts/apexcharts.js"></script>
-    <!-- Main JS -->
+
     <script src="/Content/assets/js/main.js"></script>
-    <!-- Page JS -->
-    <script src="/Content/assets/js/dashboards-analytics.js"></script>
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready( function () {
+          var dTable = $('#designationTable').DataTable();
+          $('#designationMsg').hide();
+          $('#deptMsg').hide();
+          
+      } );
+    </script>
+    <script type="text/javascript">
+      function addDesignationFunction() {
+
+          var msgDiv = document.getElementById('designationMsg');
+
+          var name = $("#designationName").val();
+          name = name.trim();
+          if (name.length == 0 || name == "") {
+            msgDiv.innerText ='Please provide a designation name.';
+            $('#designationMsg').show();
+            $('#designationMsg').delay(3000).fadeOut();
+            
+            return false;
+          }else{
+            $('#designationMsg').hide();
+          }
+          var deptSelect = document.getElementById('departmentName'); // or in jQuery use: select = this;
+          var deptName = deptSelect.value.trim();
+          if (deptName == '' || deptName.length == 0) {
+            document.getElementById('deptMsg').innerText ='Please choose a department name.';
+            $('#deptMsg').show();
+            $('#deptMsg').delay(3000).fadeOut();
+
+            return false;
+          }else{
+            $('#deptMsg').hide();
+          }
+
+          var deptId = deptSelect.options[deptSelect.selectedIndex].getAttribute('dept-id');
+          var json = {};
+          json.Name = name;
+          var dept ={};
+          dept.Id = deptId;
+          dept.Name = deptName;
+          json.Department = dept;
+          console.log(json);
+          //alert(json);
+          
+          $.ajax({
+              type: "POST",
+              url: "addDesignation",
+              contentType: "application/json; charset=utf-8",
+              data: JSON.stringify(json),
+              dataType: "json",
+              success: function(data) {
+                  //var data = JSON.parse(JSON.stringify(resp));
+                  console.log(data.status);
+                  if(data.status == 'success'){
+                    $('#addDesignation').modal('hide');
+                    //alert(data.result.Id);
+                    document.getElementById('toastMsg').innerText = 'Designation added successfully.';
+                    var myToast = document.getElementById('successToast')
+                    var successToast = new bootstrap.Toast(myToast);
+                    successToast.show()
+
+                    var dTable = $('#designationTable').DataTable();
+
+                    dTable.row.add($('<tr><td>'+data.result.Id+'</td><td><strong>'+data.result.Name+'</strong></td><td>'+data.result.Department.Name+'</td><td class="text-end"><div class="dropdown">'+
+                    '<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>'+
+                    '<div class="dropdown-menu"><a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit </a>'+
+                    '<a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete </a></div></div></td></tr>')).draw();
+
+                  }else if(data.status == 'failed'){
+                    //console.log(data.status);
+                    $('#addDesignation').modal('hide');
+
+                    document.getElementById('toastFailMsg').innerText = 'Failed due to internal problem.';
+                    var myToast = document.getElementById('failedToast')
+                    var failedToast = new bootstrap.Toast(myToast);
+                    failedToast.show()
+                  }else{
+                    //console.log(data.status);
+                    msgDiv.innerText = 'Found duplicate a designation name.';
+                    $('#deptMsg').show();
+                    $('#deptMsg').delay(3000).fadeOut();
+                  }                  
+                  $("#designationName").val('')
+                  deptSelect.selectedIndex = 0;
+              },
+              error: function(error) {
+                  console.log(error);
+                  document.getElementById('toastFailMsg').innerText = 'Failed due to server problem.';
+                  var myToast = document.getElementById('failedToast')
+                  var failedToast = new bootstrap.Toast(myToast);
+                  failedToast.show()
+              }
+          });
+          
+      }
+    </script>
   </body>
 </html>
