@@ -356,8 +356,7 @@
             <div class="modal-body">
               <form>
               <div class="form-group">
-                <label>Department Name <span class="text-danger">*</span>
-                </label>
+                <label for="editField" class="form-label">Department Name <span class="text-danger">*</span></label>
                 <input class="form-control" id="editField" type="text" />
                 <div id="deptMsg1" class="my-2 alert alert-danger" role="alert"></div>
               </div>

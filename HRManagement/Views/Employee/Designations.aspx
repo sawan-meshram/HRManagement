@@ -257,14 +257,7 @@
 			  </div>
               <div class="row mt-4">
                 <div class="col-md-12">
-                  <!--
-                  <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="javascript:void(0);">
-                        <i class="bx bxs-user-account me-1"></i> Personal Details </a>
-                    </li>
-                  </ul>
-                  -->
+                 
 				  <div class="card mb-4">
 					<h5 class="card-header">Designation Names</h5>
           <hr class="my-3" />
@@ -290,54 +283,16 @@
                     <i class="bx bx-dots-vertical-rounded"></i>
                   </button>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDesignation">
+                    <a class="dropdown-item" onclick="editDesignation(this)">
                     <i class="bx bx-edit-alt me-1"></i> Edit </a>
-                    <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDesignation">
+                    <a class="dropdown-item" onclick="deleteDesignation(this)">
                     <i class="bx bx-trash me-1"></i> Delete </a>
                   </div>
                   </div>
                 </td>
               </tr>
               <% } %>
-              <!--
-						  
-						  <tr>
-							<td>2</td>
-							<td>Java Developer</td>
-							<td>Application Development</td>
-							<td class="text-end">
-							  <div class="dropdown">
-								<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-								  <i class="bx bx-dots-vertical-rounded"></i>
-								</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDesignation">
-										<i class="bx bx-edit-alt me-1"></i> Edit </a>
-									<a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDesignation">
-										<i class="bx bx-trash me-1"></i> Delete </a>
-								</div>
-							  </div>
-							</td>
-						  </tr>
-						  <tr>
-							<td>2</td>
-							<td>Android Developer</td>
-							<td>Android Development</td>
-							<td class="text-end">
-							  <div class="dropdown">
-								<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-								  <i class="bx bx-dots-vertical-rounded"></i>
-								</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#editDesignation">
-										<i class="bx bx-edit-alt me-1"></i> Edit </a>
-									<a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#deleteDesignation">
-										<i class="bx bx-trash me-1"></i> Delete </a>
-								</div>
-							  </div>
-							</td>
-						  </tr>
-              -->
+              
 						</tbody>
 					  </table>
 					</div> <!--Table-->
@@ -370,10 +325,6 @@
                 <option value="">Select Department</option>
                 <% foreach (var dept in departments) { %>
                   <option dept-id="<%= dept.Id %>" value="<%= dept.Name %>"><%= dept.Name %></option>
-                  <!--
-                <option value="Web Development">Web Development</option>
-                <option value="Application Development">Application Development</option>
-                -->
                 <% } %>
               </select>
               <div id="deptMsg" class="my-2 alert alert-danger" role="alert"></div>
@@ -398,8 +349,9 @@
 					<div class="modal-body">
 					  <div class="row">
 						<div class="col mb-3">
-						  <label for="designationName" class="form-label">Designation Name <span class="text-danger">*</span></label>
-						  <input type="text" id="designationName" class="form-control" value="Java Developer"  />
+						  <label for="editDesignationName" class="form-label">Designation Name <span class="text-danger">*</span></label>
+						  <input type="text" id="editDesignationName" class="form-control" />
+              <div id="designationMsg1" class="my-2 alert alert-danger" role="alert"></div>
 						</div>
 					  </div>
 					  <div class="row">
@@ -409,17 +361,14 @@
                 <option value="">Select Department</option>
                 <% foreach (var dept in departments) { %>
                   <option dept-id="<%= dept.Id %>" value="<%= dept.Name %>"><%= dept.Name %></option>
-                  <!--
-                <option value="Web Development">Web Development</option>
-                <option value="Application Development">Application Development</option>
-                -->
                 <% } %>
               </select>
+              <div id="deptMsg1" class="my-2 alert alert-danger" role="alert"></div>
 						</div>
 					  </div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">Save</button>
+						<button type="button" class="btn btn-primary" onclick="updateDesignationFunction()">Save</button>
 					</div>
 				  </div>
 				</div>
@@ -436,7 +385,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
-						<button type="button" class="btn btn-primary">Delete</button>
+						<button type="button" class="btn btn-primary" onclick="deleteDesignationFunction()">Delete</button>
 					</div>
 					  
 				  </div>
@@ -493,7 +442,8 @@
           var dTable = $('#designationTable').DataTable();
           $('#designationMsg').hide();
           $('#deptMsg').hide();
-          
+          $('#designationMsg1').hide();
+          $('#deptMsg1').hide();
       } );
     </script>
     <script type="text/javascript">
@@ -555,8 +505,8 @@
 
                     dTable.row.add($('<tr><td>'+data.result.Id+'</td><td><strong>'+data.result.Name+'</strong></td><td>'+data.result.Department.Name+'</td><td class="text-end"><div class="dropdown">'+
                     '<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>'+
-                    '<div class="dropdown-menu"><a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i> Edit </a>'+
-                    '<a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete </a></div></div></td></tr>')).draw();
+                    '<div class="dropdown-menu"><a class="dropdown-item" onclick="editDesignation(this)"><i class="bx bx-edit-alt me-1"></i> Edit </a>'+
+                    '<a class="dropdown-item" onclick="deleteDesignation(this)"><i class="bx bx-trash me-1"></i> Delete </a></div></div></td></tr>')).draw();
 
                   }else if(data.status == 'failed'){
                     //console.log(data.status);
@@ -584,6 +534,37 @@
               }
           });
           
+      }
+      var selectedRow;
+      function editDesignation(link){
+        var table = $('#designationTable').DataTable();
+        var row = table.row($(link).closest('tr'));
+
+        // Store the data of the selected row in the global variable
+        selectedRow = row;
+
+        // Open the modal for editing
+        $("#editDesignationName").val(row.data()[1].replace('<strong>', '').replace('</strong>', '').trim());
+
+        var deptSelect = document.getElementById("departmentName_1");
+        for (var i = 0; i < deptSelect.options.length; ++i) {
+            if (deptSelect.options[i].text === row.data()[2]){
+              deptSelect.options[i].selected = true; //or
+              //deptSelect.selectedIndex = i;
+              break;
+            }
+        }
+        $('#editDesignation').modal('show');
+      }
+      function updateDesignationFunction(){
+
+      }
+      function deleteDesignation(link){
+        selectedRow = $('#designationTable').DataTable().row($(link).closest('tr'));
+        $('#deleteDesignation').modal('show');
+      }
+      function deleteDesignationFunction(){
+
       }
     </script>
   </body>
