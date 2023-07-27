@@ -91,7 +91,32 @@ namespace HRManagement.DAOImpl
             }
         }
 
+        public bool Update(Designation designation)
+        {
+            using (SqliteCommand command = _conn.CreateCommand())
+            {
 
+                // Insert multiple records using a transaction
+                using (SqliteTransaction transaction = _conn.BeginTransaction())
+                {
+                    // Insert a single record
+                    command.CommandText = $"UPDATE {_tableName} SET DESIGNATION = @Designation, DEPARTMENT_ID = @DepartmentId WHERE ID = @Id";
+                    command.Parameters.AddWithValue("@Designation", designation.Name);
+                    command.Parameters.AddWithValue("@DepartmentId", designation.Department.Id);
+                    command.Parameters.AddWithValue("@Id", designation.Id);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    transaction.Commit();
+
+                    if (rowsAffected > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
         public Designation Read(int id)
         {
@@ -111,7 +136,7 @@ namespace HRManagement.DAOImpl
                     {
                         designation = new Designation()
                         {
-                            Id = reader.GetInt32(reader.GetOrdinal($"{_tableName}.ID")),
+                            Id = reader.GetInt32(reader.GetOrdinal("ID")),
                             Name = reader.GetString(reader.GetOrdinal("DESIGNATION")),
                             Department = new Department(reader.GetInt32(reader.GetOrdinal("DEPARTMENT_ID")), reader.GetString(reader.GetOrdinal("DEPARTMENT")))
                         };
@@ -155,9 +180,6 @@ namespace HRManagement.DAOImpl
             return designations;
         }
 
-        public bool Update(Designation designation)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

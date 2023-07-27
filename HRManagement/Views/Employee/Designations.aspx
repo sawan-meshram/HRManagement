@@ -340,56 +340,56 @@
 			  </div>    <!--/ addDesignation-->
         <!-- editDesignation-->
 			  <div id="editDesignation" class="modal fade" role="dialog">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-				  <div class="modal-content">
-					<div class="modal-header">
-					  <h5 class="modal-title">Edit Designation</h5>
-					  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-					  <div class="row">
-						<div class="col mb-3">
-						  <label for="editDesignationName" class="form-label">Designation Name <span class="text-danger">*</span></label>
-						  <input type="text" id="editDesignationName" class="form-control" />
-              <div id="designationMsg1" class="my-2 alert alert-danger" role="alert"></div>
-						</div>
-					  </div>
-					  <div class="row">
-						<div class="col mb-3">
-						  <label for="departmentName_1" class="form-label">Department <span class="text-danger">*</span></label>
-              <select id="departmentName_1" class="select2 form-select">
-                <option value="">Select Department</option>
-                <% foreach (var dept in departments) { %>
-                  <option dept-id="<%= dept.Id %>" value="<%= dept.Name %>"><%= dept.Name %></option>
-                <% } %>
-              </select>
-              <div id="deptMsg1" class="my-2 alert alert-danger" role="alert"></div>
-						</div>
-					  </div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" onclick="updateDesignationFunction()">Save</button>
-					</div>
-				  </div>
-				</div>
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Edit Designation</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+              <div class="col mb-3">
+                <label for="editDesignationName" class="form-label">Designation Name <span class="text-danger">*</span></label>
+                <input type="text" id="editDesignationName" class="form-control" />
+                <div id="designationMsg1" class="my-2 alert alert-danger" role="alert"></div>
+              </div>
+              </div>
+              <div class="row">
+              <div class="col mb-3">
+                <label for="departmentName_1" class="form-label">Department <span class="text-danger">*</span></label>
+                <select id="departmentName_1" class="select2 form-select">
+                  <option value="">Select Department</option>
+                  <% foreach (var dept in departments) { %>
+                    <option dept-id="<%= dept.Id %>" value="<%= dept.Name %>"><%= dept.Name %></option>
+                  <% } %>
+                </select>
+                <div id="deptMsg1" class="my-2 alert alert-danger" role="alert"></div>
+              </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" onclick="updateDesignationFunction()">Save</button>
+            </div>
+            </div>
+          </div>
 			  </div> <!--/ editDesignation-->
         <!-- deleteDesignation-->
 			  <div class="modal fade" id="deleteDesignation" role="dialog">
-				<div class="modal-dialog modal-dialog-centered" role="document">
-				  <div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Delete Designation</h5>
-					</div>
-					<div class="modal-body">
-						<h6 class="mb-0">Are you sure want to delete?</h6>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
-						<button type="button" class="btn btn-primary" onclick="deleteDesignationFunction()">Delete</button>
-					</div>
-					  
-				  </div>
-				</div>
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Delete Designation</h5>
+            </div>
+            <div class="modal-body">
+              <h6 class="mb-0">Are you sure want to delete?</h6>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
+              <button type="button" class="btn btn-primary" onclick="deleteDesignationFunction()">Delete</button>
+            </div>
+              
+            </div>
+          </div>
 			  </div> <!--/ deleteDesignation-->
 
         <div id="successToast" class="bs-toast toast bg-success m-2 toast-placement-ex top-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
@@ -475,18 +475,24 @@
           }
 
           var deptId = deptSelect.options[deptSelect.selectedIndex].getAttribute('dept-id');
-          var json = {};
-          json.Name = name;
+
+         
+          var design = {};
+          design.Name = name;
           var dept ={};
           dept.Id = deptId;
           dept.Name = deptName;
-          json.Department = dept;
+          design.Department = dept;
+          var json = {};
+          json.type = "create";
+          json.query = design;
+
           console.log(json);
           //alert(json);
           
           $.ajax({
               type: "POST",
-              url: "addDesignation",
+              url: "processDesignation",
               contentType: "application/json; charset=utf-8",
               data: JSON.stringify(json),
               dataType: "json",
@@ -557,14 +563,146 @@
         $('#editDesignation').modal('show');
       }
       function updateDesignationFunction(){
+        var msgDiv1 = document.getElementById('designationMsg1');
+        var msgDiv2 = document.getElementById('deptMsg1');
 
+        var rowData = selectedRow.data();
+        var name= rowData[1].replace('<strong>', '').replace('</strong>', '').trim()
+
+        var newName = $("#editDesignationName").val().trim();
+        if (newName.length == 0 || newName == "") {
+          msgDiv1.innerText ='Please provide a designation name.';
+          $('#designationMsg1').show();
+          $('#designationMsg1').delay(3000).fadeOut();
+          return false;
+        }else if(newName.toLowerCase() === name.toLowerCase()){
+          msgDiv1.innerText ='Please provide new designation name.';
+          $('#designationMsg1').show();
+          $('#designationMsg1').delay(3000).fadeOut();
+          return false;
+        }
+        var deptSelect = document.getElementById('departmentName_1');
+        var deptName = deptSelect.value.trim();
+        if (deptName == '' || deptName.length == 0) {
+          msgDiv2.innerText ='Please choose a department name.';
+          $('#deptMsg1').show();
+          $('#deptMsg1').delay(3000).fadeOut();
+          return false;
+        }
+
+        var deptId = deptSelect.options[deptSelect.selectedIndex].getAttribute('dept-id');
+
+        var design = {};
+        design.Id = rowData[0];
+        design.Name = newName;
+        var dept ={};
+        dept.Id = deptId;
+        dept.Name = deptName;
+        design.Department = dept;
+        var json = {};
+        json.type = "update";
+        json.query = design;
+
+        console.log(json);
+
+        $.ajax({
+          type: "POST",
+          url: "processDesignation",
+          contentType: "application/json; charset=utf-8",
+          data: JSON.stringify(json),
+          dataType: "json",
+          success: function(data) {
+              //var data = JSON.parse(JSON.stringify(resp));
+              console.log(data.status);
+              if(data.status == 'success'){
+                $('#designationMsg1').hide();
+                $('#deptMsg1').hide();
+
+                rowData[1] = '<strong>'+data.result.Name+'</strong>';
+                rowData[2] = data.result.Department.Name;
+                selectedRow.data(rowData);
+                selectedRow.draw('full-reset');
+
+                $("#editDesignation").modal("hide");
+
+                //alert(data.result.Id);
+                document.getElementById('toastMsg').innerText = 'Designation updated successfully.';
+                var myToast = document.getElementById('successToast')
+                var successToast = new bootstrap.Toast(myToast);
+                successToast.show();
+
+              }else if(data.status == 'failed'){
+                //console.log(data.status);
+                $('#editDesignation').modal('hide');
+
+                document.getElementById('toastFailMsg').innerText = 'Failed due to internal problem.';
+                var myToast = document.getElementById('failedToast')
+                var failedToast = new bootstrap.Toast(myToast);
+                failedToast.show()
+              }else{
+                //console.log(data.status);
+                msgDiv1.innerText = 'Found duplicate a department name.';
+                $('#designationMsg1').show();
+                $('#designationMsg1').delay(3000).fadeOut();
+              }                  
+              $("#editField").val('')
+          },
+          error: function(error) {
+              console.log(error);
+              document.getElementById('toastFailMsg').innerText = 'Failed due to server problem.';
+              var myToast = document.getElementById('failedToast')
+              var failedToast = new bootstrap.Toast(myToast);
+              failedToast.show()
+          }
+        });  
       }
       function deleteDesignation(link){
         selectedRow = $('#designationTable').DataTable().row($(link).closest('tr'));
         $('#deleteDesignation').modal('show');
       }
       function deleteDesignationFunction(){
+        var json = {};
+        json.type = "delete";
+        var design = {};
+        design.Id = selectedRow.data()[0];
+        json.query = design;
+          
+        $.ajax({
+          type: "POST",
+          url: 'processDesignation',
+          contentType: "application/json; charset=utf-8",
+          data: JSON.stringify(json),
+          dataType: "json",
+          success: function (msg) {
+            console.log(msg.status);
+            if(msg.status == 'success'){
+              var table = $('#designationTable').DataTable();
+              table.row(selectedRow).remove().draw();
+              
+              $('#deleteDesignation').modal('hide');
 
+              document.getElementById('toastMsg').innerText = 'Designation deleted successfully.';
+              var myToast = document.getElementById('successToast')
+              var successToast = new bootstrap.Toast(myToast);
+              successToast.show()
+
+            }else{
+              //console.log(JSON.stringify(msg));
+              document.getElementById('toastFailMsg').innerText = 'Failed due to internal problem.';
+              var myToast = document.getElementById('failedToast')
+              var failedToast = new bootstrap.Toast(myToast);
+              failedToast.show()
+            }
+          },
+          error: function (e) {
+              console.log(e)
+              // closeSearchModal();
+              document.getElementById('toastFailMsg').innerText = 'Failed due to server problem.';
+              var myToast = document.getElementById('failedToast')
+              var failedToast = new bootstrap.Toast(myToast);
+              failedToast.show()
+          }
+        });
       }
     </script>
   </body>

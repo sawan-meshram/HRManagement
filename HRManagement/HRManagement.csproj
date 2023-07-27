@@ -317,6 +317,8 @@
     <Compile Include="DAO\DesignationDao.cs" />
     <Compile Include="DAOImpl\DesignationDaoImpl.cs" />
     <Compile Include="Handler\AddDesignationHandler.cs" />
+    <Compile Include="Handler\DepartmentManager.cs" />
+    <Compile Include="Handler\DesignationManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

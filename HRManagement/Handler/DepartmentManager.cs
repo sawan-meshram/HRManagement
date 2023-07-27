@@ -11,12 +11,14 @@ using HRManagement.DAO;
 using HRManagement.DAOImpl;
 namespace HRManagement.Handler
 {
-    public class UpdateDepartmentHandler : IHttpHandler
+    public class DepartmentManager : IHttpHandler
     {
         public bool IsReusable => true;
 
         public void ProcessRequest(HttpContext context)
         {
+            context.Response.ContentType = "application/json";
+
             var jsonString = string.Empty;
 
             using (Stream inputStream = context.Request.InputStream)
@@ -33,52 +35,59 @@ namespace HRManagement.Handler
             DBConnection dbConn = null;
             try
             {
+                bool flag = false, dup = false;
                 JObject jObject = JObject.Parse(jsonString);
 
                 string queryType = (string)jObject["type"];
                 string deptQuery = jObject["query"].ToString();
+                //Console.WriteLine(string.Format("queryType : {0}, DeptQuery : {1}", queryType, deptQuery));
 
-                Console.WriteLine(string.Format("queryType : {0}, DeptQuery : {1}", queryType, deptQuery));
-
-                Department dept = JsonConvert.DeserializeObject<Department>(deptQuery);
-
-
-                Console.WriteLine("Update Department");
-                Console.WriteLine("new departmentName :" + dept.Name);
+                Department department = JsonConvert.DeserializeObject<Department>(deptQuery);
 
                 dbConn = new DBConnection.DBConnectionBuilder().BuildConnection();
-
-                dept.Name = U.ToTitleCase(dept.Name);
-
                 DepartmentDao dao = new DepartmentDaoImpl(dbConn.Connection);
 
-                bool updated = false, dup = false;
-                if (!dao.IsRecordExists(dept.Name))
+
+
+                if (queryType.Equals("delete"))
                 {
-                    updated = dao.Update(dept);
-                    Console.WriteLine("Inserted success");
+                    flag = dao.Delete(department.Id);
                 }
                 else
                 {
-                    dup = true;
+                    department.Name = U.ToTitleCase(department.Name);
+
+                    if (!dao.IsRecordExists(department.Name))
+                    {
+                        if (queryType.Equals("create"))
+                        {
+                            flag = dao.Insert(department);
+                        }
+                        else if (queryType.Equals("update"))
+                        {
+                            flag = dao.Update(department);
+                        }
+                    }
+                    else
+                    {
+                        dup = true;
+                    }
+                    if (flag)
+                    {
+                        res["result"] = JObject.FromObject(department);
+                    }
                 }
-
-
-                context.Response.ContentType = "application/json";
-
-                if (updated)
+                if (flag)
                 {
                     res["status"] = "success";
-
-                    res["result"] = JObject.FromObject(dept);
                 }
                 else
                 {
                     if (dup) res["status"] = "duplicate";
                     else res["status"] = "failed";
                 }
-                Console.WriteLine("result ::" + res.ToString());
 
+                Console.WriteLine("result ::" + res.ToString());
             }
             catch (Exception e)
             {
@@ -92,6 +101,8 @@ namespace HRManagement.Handler
             }
 
             context.Response.Write(JsonConvert.SerializeObject(res));
-        }
+
+        }//eof ProcessRequest()
+
     }
 }

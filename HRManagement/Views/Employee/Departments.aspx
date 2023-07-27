@@ -453,12 +453,19 @@
           }else{
             $('#deptMsg').hide();
           }
+
           var json = {};
-          json.Name = name;
+          json.type = "create";
+          var deptJson = {};
+          deptJson.Name = name;
+          json.query = deptJson;
+
+          //var json = {};
+          //json.Name = name;
           //alert(json);
           $.ajax({
               type: "POST",
-              url: "/addDepartment",
+              url: "processDepartment",
               contentType: "application/json; charset=utf-8",
               data: JSON.stringify(json),
               dataType: "json",
@@ -552,40 +559,50 @@
         $('#deleteDepartment').modal('show');
       }
       function deleteDeptFunction(){
+
+        var json = {};
+        json.type = "delete";
+        var deptJson = {};
+        deptJson.Id = selectedRow.data()[0];
+        json.query = deptJson;
+          
         $.ajax({
-            type: "POST",
-            url: 'deleteDepartment?id=' + selectedRow.data()[0],
-            dataType: "json",
-            success: function (msg) {
-              console.log(msg.status);
-              if(msg.status == 'success'){
-                var table = $('#deptTable').DataTable();
-                table.row(selectedRow).remove().draw();
-                
-                $('#deleteDepartment').modal('hide');
+          type: "POST",
+          //url: 'processDepartment?id=' + selectedRow.data()[0],
+          url: 'processDepartment',
+          contentType: "application/json; charset=utf-8",
+          data: JSON.stringify(json),
+          dataType: "json",
+          success: function (msg) {
+            console.log(msg.status);
+            if(msg.status == 'success'){
+              var table = $('#deptTable').DataTable();
+              table.row(selectedRow).remove().draw();
+              
+              $('#deleteDepartment').modal('hide');
 
-                document.getElementById('toastMsg').innerText = 'Department deleted successfully.';
-                var myToast = document.getElementById('successToast')
-                var successToast = new bootstrap.Toast(myToast);
-                successToast.show()
+              document.getElementById('toastMsg').innerText = 'Department deleted successfully.';
+              var myToast = document.getElementById('successToast')
+              var successToast = new bootstrap.Toast(myToast);
+              successToast.show()
 
-              }else{
-                //console.log(JSON.stringify(msg));
-                document.getElementById('toastFailMsg').innerText = 'Failed due to internal problem.';
-                var myToast = document.getElementById('failedToast')
-                var failedToast = new bootstrap.Toast(myToast);
-                failedToast.show()
-              }
-            },
-            error: function (e) {
-                console.log(e)
-                // closeSearchModal();
-                document.getElementById('toastFailMsg').innerText = 'Failed due to server problem.';
-                var myToast = document.getElementById('failedToast')
-                var failedToast = new bootstrap.Toast(myToast);
-                failedToast.show()
+            }else{
+              //console.log(JSON.stringify(msg));
+              document.getElementById('toastFailMsg').innerText = 'Failed due to internal problem.';
+              var myToast = document.getElementById('failedToast')
+              var failedToast = new bootstrap.Toast(myToast);
+              failedToast.show()
             }
-          });
+          },
+          error: function (e) {
+              console.log(e)
+              // closeSearchModal();
+              document.getElementById('toastFailMsg').innerText = 'Failed due to server problem.';
+              var myToast = document.getElementById('failedToast')
+              var failedToast = new bootstrap.Toast(myToast);
+              failedToast.show()
+          }
+        });
       }
       function editDept(link) {
         var table = $('#deptTable').DataTable();
@@ -600,38 +617,83 @@
       }
 
       function updateDeptFunction(){
-          var rowData = selectedRow.data();
-          var name= rowData[1].replace('<strong>', '').replace('</strong>', '').trim()
+        var msgDiv = document.getElementById('deptMsg1');
 
-          var newName = $("#editField").val().trim();
-          if (newName.length == 0 || newName == "") {
-            document.getElementById('deptMsg1').innerText ='Please provide a department name.';
-            $('#deptMsg1').show();
-            $('#deptMsg1').delay(3000).fadeOut();
-            
-            return false;
-          }else if(newName.toLowerCase() === name.toLowerCase()){
-            document.getElementById('deptMsg1').innerText ='Please provide new department name.';
-            $('#deptMsg1').show();
-            $('#deptMsg1').delay(3000).fadeOut();
-            return false;
-          }else{
-            $('#deptMsg1').hide();
-            rowData[1] = '<strong>'+newName+'</strong>';
-            selectedRow.data(rowData);
-            selectedRow.draw('full-reset');
+        var rowData = selectedRow.data();
+        var name= rowData[1].replace('<strong>', '').replace('</strong>', '').trim()
 
-            $("#editDepartment").modal("hide");
+        var newName = $("#editField").val().trim();
+        if (newName.length == 0 || newName == "") {
+          msgDiv.innerText ='Please provide a department name.';
+          $('#deptMsg1').show();
+          $('#deptMsg1').delay(3000).fadeOut();
+          
+          return false;
+        }else if(newName.toLowerCase() === name.toLowerCase()){
+          msgDiv.innerText ='Please provide new department name.';
+          $('#deptMsg1').show();
+          $('#deptMsg1').delay(3000).fadeOut();
+          return false;
+        }
 
-            var json = {};
-            json.Id = rowData[0];
-            json.newName = rowData[1];
-            console.log(json);
-            document.getElementById('toastMsg').innerText = 'Department updated successfully.';
-            var myToast = document.getElementById('successToast')
-            var successToast = new bootstrap.Toast(myToast);
-            successToast.show()
-          } 
+        var json = {};
+        json.type = "update";
+        var deptJson = {};
+        deptJson.Id = rowData[0];
+        deptJson.Name = newName;
+        json.query = deptJson;
+
+        console.log(json);
+        
+        $.ajax({
+          type: "POST",
+          url: "processDepartment",
+          contentType: "application/json; charset=utf-8",
+          data: JSON.stringify(json),
+          dataType: "json",
+          success: function(data) {
+              //var data = JSON.parse(JSON.stringify(resp));
+              console.log(data.status);
+              if(data.status == 'success'){
+                $('#deptMsg1').hide();
+                rowData[1] = '<strong>'+data.result.Name+'</strong>';
+                selectedRow.data(rowData);
+                selectedRow.draw('full-reset');
+
+                $("#editDepartment").modal("hide");
+
+                //alert(data.result.Id);
+                document.getElementById('toastMsg').innerText = 'Department updated successfully.';
+                var myToast = document.getElementById('successToast')
+                var successToast = new bootstrap.Toast(myToast);
+                successToast.show();
+
+              }else if(data.status == 'failed'){
+                //console.log(data.status);
+                $('#editDepartment').modal('hide');
+
+                document.getElementById('toastFailMsg').innerText = 'Failed due to internal problem.';
+                var myToast = document.getElementById('failedToast')
+                var failedToast = new bootstrap.Toast(myToast);
+                failedToast.show()
+              }else{
+                //console.log(data.status);
+                msgDiv.innerText = 'Found duplicate a department name.';
+                $('#deptMsg1').show();
+                $('#deptMsg1').delay(3000).fadeOut();
+              }                  
+              $("#editField").val('')
+          },
+          error: function(error) {
+              console.log(error);
+              document.getElementById('toastFailMsg').innerText = 'Failed due to server problem.';
+              var myToast = document.getElementById('failedToast')
+              var failedToast = new bootstrap.Toast(myToast);
+              failedToast.show()
+          }
+        });
+
+         
       }
      
     </script>
