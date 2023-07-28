@@ -1,16 +1,18 @@
 ﻿<Properties StartupConfiguration="{9E371AEC-1605-44EE-8F17-D782226AFD6A}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HRManagement/DAOImpl/DesignationDaoImpl.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HRManagement/Views/Employee/AllEmployee.aspx.cs">
     <Files>
       <File FileName="HRManagement/Util/DBTableChecker.cs" Line="44" Column="58" />
       <File FileName="HRManagement/Util/DBTableQuery.cs" Line="19" Column="42" />
       <File FileName="HRManagement/Views/Employee/Departments.aspx.cs" Line="34" Column="33" />
-      <File FileName="HRManagement/Views/Employee/Designations.aspx.cs" Line="24" Column="25" />
-      <File FileName="HRManagement/DAOImpl/DesignationDaoImpl.cs" Line="91" Column="14" />
+      <File FileName="HRManagement/Views/Employee/Designations.aspx.cs" Line="34" Column="10" />
+      <File FileName="HRManagement/DAOImpl/DesignationDaoImpl.cs" Line="31" Column="84" />
       <File FileName="HRManagement/Web.config" Line="29" Column="16" />
       <File FileName="HRManagement/Global.asax.cs" Line="30" Column="14" />
-      <File FileName="HRManagement/Handler/DepartmentManager.cs" Line="39" Column="17" />
-      <File FileName="HRManagement/Handler/AddDesignationHandler.cs" Line="42" Column="43" />
-      <File FileName="HRManagement/Handler/DesignationManager.cs" Line="63" Column="42" />
+      <File FileName="HRManagement/Handler/DepartmentManager.cs" Line="45" Column="92" />
+      <File FileName="HRManagement/Handler/DesignationManager.cs" Line="60" Column="23" />
+      <File FileName="HRManagement/Views/Administration/CandidateRegistration.aspx.cs" Line="35" Column="10" />
+      <File FileName="HRManagement/Views/Employee/AllEmployee.aspx.cs" Line="17" Column="9" />
+      <File FileName="HRManagement/Views/Employee/EmployeeRegistration.aspx.cs" Line="29" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -36,9 +38,7 @@
                 </Node>
               </Node>
               <Node name="DAO" expanded="True" />
-              <Node name="DAOImpl" expanded="True">
-                <Node name="DesignationDaoImpl.cs" selected="True" />
-              </Node>
+              <Node name="DAOImpl" expanded="True" />
               <Node name="Handler" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Util" expanded="True" />
@@ -49,8 +49,12 @@
                   <Node name="CandidateRegistration.aspx" expanded="True" />
                 </Node>
                 <Node name="Employee" expanded="True">
+                  <Node name="AllEmployee.aspx" expanded="True">
+                    <Node name="AllEmployee.aspx.cs" selected="True" />
+                  </Node>
                   <Node name="Departments.aspx" expanded="True" />
                   <Node name="Designations.aspx" expanded="True" />
+                  <Node name="EmployeeRegistration.aspx" expanded="True" />
                 </Node>
               </Node>
               <Node name="Global.asax" expanded="True" />

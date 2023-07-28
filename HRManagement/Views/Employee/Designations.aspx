@@ -575,12 +575,13 @@
           $('#designationMsg1').show();
           $('#designationMsg1').delay(3000).fadeOut();
           return false;
-        }else if(newName.toLowerCase() === name.toLowerCase()){
+        }/*
+        else if(newName.toLowerCase() === name.toLowerCase()){
           msgDiv1.innerText ='Please provide new designation name.';
           $('#designationMsg1').show();
           $('#designationMsg1').delay(3000).fadeOut();
           return false;
-        }
+        }*/
         var deptSelect = document.getElementById('departmentName_1');
         var deptName = deptSelect.value.trim();
         if (deptName == '' || deptName.length == 0) {

@@ -302,19 +302,25 @@
                             <input class="form-control" type="date" id="joiningDate" />
                           </div>
                           <div class="mb-3 col-md-6">
+                            <label for="designation" class="form-label">Designation</label>                            
+                            <select id="designation" class="select2 form-select" onchange="addDepartmentName(this)">
+                              <option value="">Select Designation</option>
+                              <% foreach (var designation in designations) { %>
+                              <option data-id="<%= designation.Id %>" dept-name="<%= designation.Department.Name %>" value="<%= designation.Name %>"><%= designation.Name %></option>
+                              <% } %>
+                            </select>
+                          </div>
+                          <div class="mb-3 col-md-6">
                             <label for="department" class="form-label">Department</label>
+                            <!--
                             <select id="department" class="select2 form-select">
                               <option value="">Select Department</option>
                               <option value="Web Development">Web Development</option>
                             </select>
+                            -->
+                            <input class="form-control" id="department" placeholder="Department input here after selecting designation..." readonly>
                           </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="designation" class="form-label">Designation</label>
-                            <select id="designation" class="select2 form-select">
-                              <option value="">Select Designation</option>
-                              <option value="Software Engineer">Software Engineer</option>
-                            </select>
-                          </div>
+                          
                           <div class="mb-3 col-md-6">
                             <label for="organizationEmail" class="form-label">Organization E-mail</label>
                             <input class="form-control" type="text" id="organizationEmail" name="organizationEmail" placeholder="example@gmail.com" />
@@ -543,13 +549,20 @@
     <script src="/Content/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="/Content/assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
-    <!-- Vendors JS -->
-    <script src="/Content/assets/vendor/libs/apex-charts/apexcharts.js"></script>
     <!-- Main JS -->
     <script src="/Content/assets/js/main.js"></script>
     <!-- Page JS -->
-    <script src="/Content/assets/js/dashboards-analytics.js"></script>
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
+     <script type="text/javascript">
+      /*
+      $(document).ready( function () {
+         
+      } );
+      */
+      function addDepartmentName(selectDesignation){
+        var deptName = selectDesignation.options[selectDesignation.selectedIndex].getAttribute('dept-name');
+        $("#department").val(deptName);
+      }
+      
+    </script>
   </body>
 </html>

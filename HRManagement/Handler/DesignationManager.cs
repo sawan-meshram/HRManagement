@@ -42,11 +42,12 @@ namespace HRManagement.Handler
                 string deptQuery = jObject["query"].ToString();
                 //Console.WriteLine(string.Format("queryType : {0}, DeptQuery : {1}", queryType, deptQuery));
 
-                Designation designation = JsonConvert.DeserializeObject<Designation>(jsonString);
+                Designation designation = JsonConvert.DeserializeObject<Designation>(deptQuery);
 
                 dbConn = new DBConnection.DBConnectionBuilder().BuildConnection();
                 DesignationDao dao = new DesignationDaoImpl(dbConn.Connection);
 
+                //Console.WriteLine(designation);
 
                 if (queryType.Equals("delete"))
                 {
@@ -54,7 +55,9 @@ namespace HRManagement.Handler
                 }
                 else
                 {
+                    //Console.WriteLine("Name :" + designation.Name);
                     designation.Name = U.ToTitleCase(designation.Name);
+                    //Console.WriteLine("Name :" + designation.Name);
 
                     if (!dao.IsRecordExists(designation.Name, designation.Department.Id))
                     {
