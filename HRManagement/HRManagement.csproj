@@ -319,6 +319,7 @@
     <Compile Include="Handler\AddDesignationHandler.cs" />
     <Compile Include="Handler\DepartmentManager.cs" />
     <Compile Include="Handler\DesignationManager.cs" />
+    <Compile Include="Handler\AddCandidateRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

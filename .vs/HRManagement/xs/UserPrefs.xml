@@ -1,18 +1,19 @@
 ﻿<Properties StartupConfiguration="{9E371AEC-1605-44EE-8F17-D782226AFD6A}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="HRManagement/Views/Employee/AllEmployee.aspx.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HRManagement/Util/Path.cs">
     <Files>
       <File FileName="HRManagement/Util/DBTableChecker.cs" Line="44" Column="58" />
       <File FileName="HRManagement/Util/DBTableQuery.cs" Line="19" Column="42" />
       <File FileName="HRManagement/Views/Employee/Departments.aspx.cs" Line="34" Column="33" />
       <File FileName="HRManagement/Views/Employee/Designations.aspx.cs" Line="34" Column="10" />
       <File FileName="HRManagement/DAOImpl/DesignationDaoImpl.cs" Line="31" Column="84" />
-      <File FileName="HRManagement/Web.config" Line="29" Column="16" />
+      <File FileName="HRManagement/Web.config" Line="33" Column="29" />
       <File FileName="HRManagement/Global.asax.cs" Line="30" Column="14" />
       <File FileName="HRManagement/Handler/DepartmentManager.cs" Line="45" Column="92" />
-      <File FileName="HRManagement/Handler/DesignationManager.cs" Line="60" Column="23" />
+      <File FileName="HRManagement/Handler/DesignationManager.cs" Line="1" Column="1" />
       <File FileName="HRManagement/Views/Administration/CandidateRegistration.aspx.cs" Line="35" Column="10" />
-      <File FileName="HRManagement/Views/Employee/AllEmployee.aspx.cs" Line="17" Column="9" />
-      <File FileName="HRManagement/Views/Employee/EmployeeRegistration.aspx.cs" Line="29" Column="10" />
+      <File FileName="HRManagement/Views/Employee/EmployeeRegistration.aspx.cs" Line="36" Column="6" />
+      <File FileName="HRManagement/Handler/AddCandidateRegistration.cs" Line="44" Column="48" />
+      <File FileName="HRManagement/Util/Path.cs" Line="13" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -41,7 +42,9 @@
               <Node name="DAOImpl" expanded="True" />
               <Node name="Handler" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="Util" expanded="True" />
+              <Node name="Util" expanded="True">
+                <Node name="Path.cs" selected="True" />
+              </Node>
               <Node name="Views" expanded="True">
                 <Node name="Administration" expanded="True">
                   <Node name="AddAttendance.aspx" expanded="True" />
@@ -49,9 +52,7 @@
                   <Node name="CandidateRegistration.aspx" expanded="True" />
                 </Node>
                 <Node name="Employee" expanded="True">
-                  <Node name="AllEmployee.aspx" expanded="True">
-                    <Node name="AllEmployee.aspx.cs" selected="True" />
-                  </Node>
+                  <Node name="AllEmployee.aspx" expanded="True" />
                   <Node name="Departments.aspx" expanded="True" />
                   <Node name="Designations.aspx" expanded="True" />
                   <Node name="EmployeeRegistration.aspx" expanded="True" />

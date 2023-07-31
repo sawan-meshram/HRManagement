@@ -248,178 +248,151 @@
               <h4 class="fw-bold py-3 mb-4">
                 <span class="text-muted fw-light">New /</span> Candidate Registration
               </h4>
+              <form id="formCandidateRegister" onsubmit="return false">
               <div class="row">
                 <div class="col-md-12">
-                  <!--
-                  <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="javascript:void(0);">
-                        <i class="bx bxs-user-account me-1"></i> Personal Details </a>
-                    </li>
-                  </ul>
-                  -->
+                 
                   <div class="card mb-4">
                     <h5 class="card-header">Candidate Registration</h5>
                     
                     <hr class="my-0" />
                     <div class="card-body">
-                      <form id="formAccountDeactivation" onsubmit="return false">
-                        <div class="row">
-                          <div class="mb-3 col-md-4">
-                            <label for="nameExLarge" class="form-label">First Name</label>
-                            <input type="text" id="nameExLarge" class="form-control" placeholder="First Name" /> 
-                          </div>
-                          <div class="mb-3 col-md-4">
-                            <label for="nameExLarge" class="form-label">Middle Name</label>
-                            <input type="tel" id="nameExLarge" class="form-control" placeholder="Middle Name" /> 
-                          </div>
-                          <div class="mb-3 col-md-4">
-                            <label for="nameExLarge" class="form-label">Last Name</label>
-                            <input type="text" id="nameExLarge" class="form-control" placeholder="Last Name" /> 
-                          </div>
-                        
-                          <div class="mb-3 col-md-4">
-                            <label for="emailCandidate" class="form-label">Email</label>
-                            <input type="text" id="emailCandidate" class="form-control" placeholder="name@example.com" /> 
-                          </div>
-                          <div class="mb-3 col-md-4">
-                            <label for="phoneNumber" class="form-label">Phone Number</label>
-                            <div class="input-group input-group-merge">
-                              <span class="input-group-text">IN (+91)</span>
-                              <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" />
-                            </div>
-                          </div>
-                          <div class="mb-3 col-md-4">
-                            <label for="alternatePhoneNumber" class="form-label">Alterate Phone Number</label>
-                            <div class="input-group input-group-merge">
-                              <span class="input-group-text">IN (+91)</span>
-                              <input type="text" id="alternatePhoneNumber" name="alternatePhoneNumber" class="form-control" />
-                            </div>
+                      <div class="row">
+                        <div class="mb-3 col-md-4">
+                          <label for="firstName" class="form-label">First Name</label>
+                          <input type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name" /> 
+                        </div>
+                        <div class="mb-3 col-md-4">
+                          <label for="middleName" class="form-label">Middle Name</label>
+                          <input type="tel" id="middleName" name="middleName" class="form-control" placeholder="Middle Name" /> 
+                        </div>
+                        <div class="mb-3 col-md-4">
+                          <label for="lastName" class="form-label">Last Name</label>
+                          <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name" /> 
+                        </div>
+                      
+                        <div class="mb-3 col-md-4">
+                          <label for="emailCandidate" class="form-label">Email</label>
+                          <input type="text" id="emailCandidate" name="emailCandidate" class="form-control" placeholder="name@example.com" /> 
+                        </div>
+                        <div class="mb-3 col-md-4">
+                          <label for="phoneNumber" class="form-label">Phone Number</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text">IN (+91)</span>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" />
                           </div>
                         </div>
-                      </form>
+                        <div class="mb-3 col-md-4">
+                          <label for="alternatePhoneNumber" class="form-label">Alterate Phone Number</label>
+                          <div class="input-group input-group-merge">
+                            <span class="input-group-text">IN (+91)</span>
+                            <input type="text" id="alternatePhoneNumber" name="alternatePhoneNumber" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </div> <!--/ card -->
                   <div class="card mb-4">
                     <h5 class="card-header">Interview Details</h5>
                     <div class="card-body">
-                      <form id="formAccountSettings" method="POST">
-                        <div class="row">
-                          <div class="mb-3 col-md-6">
-                            <label for="designation" class="form-label">Designation</label>
-                            <select id="designation" class="select2 form-select" onchange="addDepartmentName(this)">
-                              <option value="">Select Designation</option>
-                              <% foreach (var designation in designations) { %>
-                              <option data-id="<%= designation.Id %>" dept-name="<%= designation.Department.Name %>" value="<%= designation.Name %>"><%= designation.Name %></option>
-                              <% } %>
-                            </select>
-                          </div>
-							<div class="mb-3 col-md-6">
-								<label for="department" class="form-label">Department</label>
-                <!--
-								<select id="department" class="select2 form-select">
-								  <option value="">Select Department</option>
-								  <option value="Web Development">Web Development</option>
-								</select>
-                -->
-                <input class="form-control" id="department" placeholder="Department input here after selecting designation..." readonly>
-							  </div>
-							
-							<div class="mb-3 col-md-4">
-								<label for="interviewMode" class="form-label">Interview Mode</label>
-								<select id="interviewMode" class="select2 form-select">
-								  <option value="">Select Mode</option>
-								  <option value="Offline">Offline</option>
-								  <option value="Offline">Online</option>
-								  <option value="Offline">Telephonic</option>
-								</select>
-							</div>
-						
-							
-							<div class="mb-3 col-md-4">
-								<label for="interviewDate" class="form-label">Interview Date</label>
-								<input class="form-control" type="date" id="interviewDate" />
-							</div>
-							<div class="mb-3 col-md-4">
-								<label for="interviewTime" class="form-label">Interview Time</label>
-								<input class="form-control" type="time" id="interviewTime" />
-							</div>
-							
-							<div class="mb-3 col-md-6">
-								<label for="interviewResult" class="form-label">Interview Result</label>
-								<select id="interviewResult" class="select2 form-select">
-								  <option value="">Select Result</option>
-								  <option value="Offline">Pass</option>
-								  <option value="Offline">Fail</option>
-								  <option value="Offline">Hold</option>
-								</select>
-							</div>
-						
-							<div class="mb-3 col-md-6">
-								<label for="interviewerName" class="form-label">Interviewer Name</label>
-								<select id="interviewerName" class="select2 form-select">
-								  <option value="">Select Interviewer</option>
-								  <option value="Sawan Meshram">Sawan Meshram</option>
-								</select>
-							</div>
-							<div class="mb-3 col-md-12">
-								<label for="remarks" class="form-label">Remarks</label>
-								<textarea class="form-control" id="remarks" rows="2"></textarea>
-							</div>
-                          
+                      <div class="row">
+                        <div class="mb-3 col-md-6">
+                          <label for="designation" class="form-label">Designation</label>
+                          <select id="designation" name="designation" class="select2 form-select" onchange="addDepartmentName(this)">
+                            <option value="">Select Designation</option>
+                            <% foreach (var designation in designations) { %>
+                            <option data-id="<%= designation.Id %>" dept-name="<%= designation.Department.Name %>" value="<%= designation.Name %>"><%= designation.Name %></option>
+                            <% } %>
+                          </select>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="department" class="form-label">Department</label>
+                          <input class="form-control" id="department" name="department" placeholder="Department input here after selecting designation..." readonly>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                          <label for="interviewMode" class="form-label">Interview Mode</label>
+                          <select id="interviewMode" name="interviewMode" class="select2 form-select">
+                            <option value="">Select Mode</option>
+                            <option value="Offline">Offline</option>
+                            <option value="Online">Online</option>
+                            <option value="Telephonic">Telephonic</option>
+                          </select>
+                        </div>
+                        <div class="mb-3 col-md-4">
+                          <label for="interviewDate" class="form-label">Interview Date</label>
+                          <input class="form-control" type="date" name="interviewDate" id="interviewDate" />
+                        </div>
+                        <div class="mb-3 col-md-4">
+                          <label for="interviewTime" class="form-label">Interview Time</label>
+                          <input class="form-control" type="time" name="interviewTime" id="interviewTime" />
                         </div>
                         
-                      </form>
+                        <div class="mb-3 col-md-6">
+                          <label for="result" class="form-label">Interview Result</label>
+                          <select id="result" name="result" class="select2 form-select">
+                            <option value="">Select Result</option>
+                            <option value="Pass">Pass</option>
+                            <option value="Fail">Fail</option>
+                            <option value="Hold">Hold</option>
+                          </select>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="interviewerName" class="form-label">Interviewer Name</label>
+                          <select id="interviewerName" name="interviewerName" class="select2 form-select">
+                            <option value="">Select Interviewer</option>
+                            <option value="Sawan Meshram">Sawan Meshram</option>
+                          </select>
+                        </div>
+                        <div class="mb-3 col-md-12">
+                          <label for="remarks" class="form-label">Remarks</label>
+                          <textarea class="form-control" id="remarks" name="remarks" rows="2"></textarea>
+                        </div>
+                      </div>
                     </div>
-                    <!-- /Account -->
-                  </div>
+                  </div> <!--/ card -->
                   <div class="card mb-4">
                     <h5 class="card-header">Other Details</h5>
                     <div class="card-body">
-                      <form id="formAccountDeactivation" onsubmit="return false">
-                        <div class="row">
-							<div class="mb-3 col-md-6">
-								<label for="gender" class="form-label">Gender</label>
-								<select id="gender" class="select2 form-select">
-								  <option value="">Select Gender</option>
-								  <option value="Male">Male</option>
-								  <option value="Female">Female</option>
-								  <option value="Other">Other</option>
-								</select>
-							</div>
-							<div class="mb-3 col-md-6">
-								<label for="dob" class="form-label">Date Of Birth</label>
-								<input class="form-control" type="date" id="dob" />
-							</div>
-							<div class="mb-3 col-md-6">
-								<label for="address" class="form-label">Address</label>
-								<textarea class="form-control" id="address" rows="2"></textarea>
-							</div>
-							<div class="mb-3 col-md-6">
-								<label for="languageKnown" class="form-label">Language Known</label>
-								<textarea class="form-control" id="languageKnown" rows="2"></textarea>
-							</div>
-							<div class="mb-3 col-md-6">
-								<label for="formFile" class="form-label">Upload Resume</label>
-								<input class="form-control" type="file" id="formFile" />
-							</div>
-                        </div>
-                      </form>
+                      <div class="row">
+                      <div class="mb-3 col-md-6">
+                        <label for="gender" class="form-label">Gender</label>
+                        <select id="gender" name="gender" class="select2 form-select">
+                          <option value="">Select Gender</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="dob" class="form-label">Date Of Birth</label>
+                        <input class="form-control" type="date" name="dob" id="dob" />
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="address" class="form-label">Address</label>
+                        <textarea class="form-control" name="address" id="address" rows="2"></textarea>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="languageKnown" class="form-label">Language Known</label>
+                        <textarea class="form-control" id="languageKnown" name="languageKnown" rows="2"></textarea>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="resume" class="form-label">Upload Resume</label>
+                        <input class="form-control" type="file" id="resume" />
+                      </div>
+                      </div>
                     </div>
-                  </div>
-
-                  
-                  
-                </div>
-              </div>
+                  </div> <!--/ card -->
+                </div> <!--/ col-md -->
+              </div> <!--/ row -->
               <div class="row">
                 <div class="mt-2">
-                  <button type="submit" class="btn btn-primary me-2">Add Candidate</button>
+                  <button type="submit" class="btn btn-primary me-2" onclick="uploadCandidateData()">Add Candidate</button>
                   <button type="reset" class="btn btn-outline-secondary">Reset</button>
                 </div>
               </div>
-            </div>
-            <!-- / Content -->
+              </form>
+            </div> <!-- / container -->
+            
             <!-- Footer -->
             <footer class="content-footer footer bg-footer-theme">
               <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
@@ -461,7 +434,52 @@
         var deptName = selectDesignation.options[selectDesignation.selectedIndex].getAttribute('dept-name');
         $("#department").val(deptName);
       }
-      
+      function uploadCandidateData() {
+
+
+        var form = document.getElementById("formCandidateRegister");
+        var formData = new FormData(form);
+
+        formData.append('file', $('#resume')[0].files[0]);
+
+        var designateSelect = document.getElementById('designation');
+        var designateId = designateSelect.options[designateSelect.selectedIndex].getAttribute('data-id');
+
+        //var interviewModeSelect = document.getElementById('interviewMode');
+        //var interviewMode = interviewModeSelect.value.trim();
+
+        //var resultSelect = document.getElementById('result');
+        //var result = resultSelect.value.trim();
+        
+        var interviewerNameSelect = document.getElementById('interviewerName');
+        var interviewerName = interviewerNameSelect.value.trim();
+
+        //var genderSelect = document.getElementById('gender');
+        //var gender = genderSelect.value.trim();
+        
+        //formData.append("gender", gender);
+        formData.append("designateId", designateId);
+        //formData.append("interviewMode", interviewMode);
+        //formData.append("result", result);
+        formData.append("interviewerName", interviewerName);
+
+        $.ajax({
+          type: "POST",
+          url: "processCandidateRegister", // Replace with your server-side handler URL
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function (response) {
+            // Handle the server response
+            console.log("Upload successful:", response);
+          },
+          error: function (error) {
+            // Handle errors
+            console.error("Error:", error);
+          }
+        });
+      }
     </script>
+    
   </body>
 </html>
